@@ -810,6 +810,7 @@
 		FB818D401D8FC02B00E3DE64 /* MoveSpriteScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoveSpriteScene.h; sourceTree = "<group>"; };
 		FBD868F61D90148800793A17 /* ScrollBarScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ScrollBarScene.cpp; sourceTree = "<group>"; };
 		FBD868F71D90148800793A17 /* ScrollBarScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScrollBarScene.h; sourceTree = "<group>"; };
+		FBD868FB1D90192400793A17 /* LearnCocos2DConstant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LearnCocos2DConstant.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1339,6 +1340,7 @@
 				FB818D401D8FC02B00E3DE64 /* MoveSpriteScene.h */,
 				FBD868F61D90148800793A17 /* ScrollBarScene.cpp */,
 				FBD868F71D90148800793A17 /* ScrollBarScene.h */,
+				FBD868FB1D90192400793A17 /* LearnCocos2DConstant.h */,
 			);
 			name = Classes;
 			path = ../Classes;

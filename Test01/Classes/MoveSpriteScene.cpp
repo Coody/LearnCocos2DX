@@ -8,17 +8,10 @@
 
 #include "MoveSpriteScene.h"
 
+// for Constant
+#include "LearnCocos2DConstant.h"
+
 USING_NS_CC;
-
-#define D_MoveSpriteLayer_WhiteColor cocos2d::ccc4(255, 255, 255, 255)
-#define D_MoveSpriteLayer_Label_Font "Noto Sans CJK TC"
-
-typedef enum{
-    EnumMoveSpriteLayerZPosition_TitleLabel = 1,
-    EnumMoveSpriteLayerZPosition_Menu = 2,
-    EnumMoveSpriteLayerZPosition_StaticSprite = 100,
-    EnumMoveSpriteLayerZPosition_MoveSprite = 200
-}EnumMoveSpriteLayerZPosition;
 
 CCScene *MoveSpriteLayer::scene()
 {
@@ -33,7 +26,7 @@ CCScene *MoveSpriteLayer::scene()
 
 bool MoveSpriteLayer::init()
 {
-    if ( !CCLayerColor::initWithColor(D_MoveSpriteLayer_WhiteColor)) {
+    if ( !CCLayerColor::initWithColor(D_Layer_WhiteColor)) {
         return false;
     }
     
@@ -41,7 +34,7 @@ bool MoveSpriteLayer::init()
     CCPoint origin = CCDirector::sharedDirector()->getVisibleOrigin();
     
     // 加入 title
-    titleLabel = CCLabelTTF::create( "Move CCSprite Test" , D_MoveSpriteLayer_Label_Font , 60 );
+    titleLabel = CCLabelTTF::create( "Move CCSprite Test" , D_Layer_Label_Font , 60 );
     titleLabel->setColor(ccc3(240, 117, 34));
     titleLabel->setPosition(ccp(origin.x + visibleSize.width*0.5,
                                 origin.y + visibleSize.height - 100 - titleLabel->getDimensions().height));
@@ -49,7 +42,7 @@ bool MoveSpriteLayer::init()
     this->addChild(titleLabel , EnumMoveSpriteLayerZPosition_TitleLabel);
     
     // 加入 MenuItem
-    CCLabelTTF *createLabel = CCLabelTTF::create( "add Sprite", D_MoveSpriteLayer_Label_Font , 36 );
+    CCLabelTTF *createLabel = CCLabelTTF::create( "add Sprite", D_Layer_Label_Font , 36 );
     createLabel->setColor(ccc3(0,0,0));
     CCMenuItemLabel *menuItemLabel = CCMenuItemLabel::create(createLabel,
                                                              this,
@@ -130,8 +123,6 @@ void MoveSpriteLayer::createSprite(CCObject *pSender){
 
 // Touch 事件
 void MoveSpriteLayer::ccTouchesBegan( cocos2d::CCSet *pTouches , cocos2d::CCEvent *pEvent ){
-
-    CCLOG("test ");
     
     CCTouch *_touch = (CCTouch *)pTouches->anyObject();
     

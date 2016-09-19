@@ -10,6 +10,16 @@
 
 USING_NS_CC;
 
+#define D_MoveSpriteLayer_WhiteColor cocos2d::ccc4(255, 255, 255, 255)
+#define D_MoveSpriteLayer_Label_Font "Noto Sans CJK TC"
+
+typedef enum{
+    EnumMoveSpriteLayerZPosition_TitleLabel = 1,
+    EnumMoveSpriteLayerZPosition_Menu = 2,
+    EnumMoveSpriteLayerZPosition_StaticSprite = 100,
+    EnumMoveSpriteLayerZPosition_MoveSprite = 200
+}EnumMoveSpriteLayerZPosition;
+
 CCScene *MoveSpriteLayer::scene()
 {
     CCScene *scene = CCScene::create();
@@ -23,7 +33,7 @@ CCScene *MoveSpriteLayer::scene()
 
 bool MoveSpriteLayer::init()
 {
-    if ( !CCLayerColor::initWithColor(cocos2d::ccc4(255, 255, 255, 255))) {
+    if ( !CCLayerColor::initWithColor(D_MoveSpriteLayer_WhiteColor)) {
         return false;
     }
     
@@ -31,20 +41,21 @@ bool MoveSpriteLayer::init()
     CCPoint origin = CCDirector::sharedDirector()->getVisibleOrigin();
     
     // 加入 title
-    titleLabel = CCLabelTTF::create( "Move CCSprite Test" , "Noto Sans CJK TC" , 60 );
+    titleLabel = CCLabelTTF::create( "Move CCSprite Test" , D_MoveSpriteLayer_Label_Font , 60 );
     titleLabel->setColor(ccc3(240, 117, 34));
     titleLabel->setPosition(ccp(origin.x + visibleSize.width*0.5,
                                 origin.y + visibleSize.height - 100 - titleLabel->getDimensions().height));
     
-    this->addChild(titleLabel , 1);
+    this->addChild(titleLabel , EnumMoveSpriteLayerZPosition_TitleLabel);
     
     // 加入 MenuItem
-    CCLabelTTF *createLabel = CCLabelTTF::create("add Sprite", "Noto Sans CJK TC", 36);
+    CCLabelTTF *createLabel = CCLabelTTF::create( "add Sprite", D_MoveSpriteLayer_Label_Font , 36 );
     createLabel->setColor(ccc3(0,0,0));
     CCMenuItemLabel *menuItemLabel = CCMenuItemLabel::create(createLabel,
                                                              this,
                                                              menu_selector(MoveSpriteLayer::createSprite));
-    menuItemLabel->setPosition(ccp(origin.x + visibleSize.width*0.5, origin.y + visibleSize.height*0.5));
+    menuItemLabel->setPosition(ccp(origin.x + visibleSize.width*0.5,
+                                   origin.y + visibleSize.height*0.5));
     
     createSpriteMenu = CCMenu::create(menuItemLabel , NULL);
     createSpriteMenu->setPosition(CCPointZero);
@@ -110,7 +121,7 @@ void MoveSpriteLayer::createSprite(CCObject *pSender){
         
         CCSprite *sprite = CCSprite::createWithSpriteFrameName( "s1_0001.png" );
         sprite->setPosition( ccp( x , y ) );
-        this->addChild( sprite );
+        this->addChild( sprite , EnumMoveSpriteLayerZPosition_StaticSprite);
         
         this->spriteArray->addObject(sprite);
     }
@@ -137,6 +148,7 @@ void MoveSpriteLayer::ccTouchesBegan( cocos2d::CCSet *pTouches , cocos2d::CCEven
         if ( rect.containsPoint(_trueLocation) ) {
             recentTouchSprite = tempSprite;
             oldPoint = tempSprite->getPosition();
+            recentTouchSprite->setZOrder(EnumMoveSpriteLayerZPosition_MoveSprite);
             break;
         }
     }
@@ -168,9 +180,10 @@ void MoveSpriteLayer::ccTouchesEnded( cocos2d::CCSet *pTouches , cocos2d::CCEven
         CCSize visibleSize = CCDirector::sharedDirector()->getVisibleSize();
         
         if ( _trueLocation.x < visibleSize.width*0.5 && _trueLocation.y > visibleSize.height*0.5 ) {
-            CCAction *moveAction = CCMoveTo::create(0.1, oldPoint);
+            CCAction *moveAction = CCMoveTo::create(0.15, oldPoint);
             recentTouchSprite->runAction(moveAction);
         }
+        recentTouchSprite->setZOrder(EnumMoveSpriteLayerZPosition_StaticSprite);
     }
     recentTouchSprite = NULL;
 }

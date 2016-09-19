@@ -265,6 +265,7 @@
 		FB6C0B351D89513C003EAB04 /* s1.plist in Resources */ = {isa = PBXBuildFile; fileRef = FB6C0B331D89513C003EAB04 /* s1.plist */; };
 		FB6C0B361D89513C003EAB04 /* s1.png in Resources */ = {isa = PBXBuildFile; fileRef = FB6C0B341D89513C003EAB04 /* s1.png */; };
 		FB818D411D8FC02B00E3DE64 /* MoveSpriteScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FB818D3F1D8FC02B00E3DE64 /* MoveSpriteScene.cpp */; };
+		FBD868F81D90148800793A17 /* ScrollBarScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FBD868F61D90148800793A17 /* ScrollBarScene.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -807,6 +808,8 @@
 		FB6C0B341D89513C003EAB04 /* s1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = s1.png; sourceTree = "<group>"; };
 		FB818D3F1D8FC02B00E3DE64 /* MoveSpriteScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MoveSpriteScene.cpp; sourceTree = "<group>"; };
 		FB818D401D8FC02B00E3DE64 /* MoveSpriteScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoveSpriteScene.h; sourceTree = "<group>"; };
+		FBD868F61D90148800793A17 /* ScrollBarScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ScrollBarScene.cpp; sourceTree = "<group>"; };
+		FBD868F71D90148800793A17 /* ScrollBarScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScrollBarScene.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1334,6 +1337,8 @@
 				FB59DC041D89013D00F1A82D /* TreeScene.h */,
 				FB818D3F1D8FC02B00E3DE64 /* MoveSpriteScene.cpp */,
 				FB818D401D8FC02B00E3DE64 /* MoveSpriteScene.h */,
+				FBD868F61D90148800793A17 /* ScrollBarScene.cpp */,
+				FBD868F71D90148800793A17 /* ScrollBarScene.h */,
 			);
 			name = Classes;
 			path = ../Classes;
@@ -2174,6 +2179,7 @@
 				15C0B574196D412F007F909D /* UITouchGroup.cpp in Sources */,
 				15A3DA351682F826002FB0C5 /* CCBSequence.cpp in Sources */,
 				15A3DA361682F826002FB0C5 /* CCBSequenceProperty.cpp in Sources */,
+				FBD868F81D90148800793A17 /* ScrollBarScene.cpp in Sources */,
 				FB818D411D8FC02B00E3DE64 /* MoveSpriteScene.cpp in Sources */,
 				15A3DA371682F826002FB0C5 /* CCBValue.cpp in Sources */,
 				15A3DA381682F826002FB0C5 /* CCControlButtonLoader.cpp in Sources */,

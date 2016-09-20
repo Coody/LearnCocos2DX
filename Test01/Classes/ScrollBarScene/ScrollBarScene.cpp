@@ -14,6 +14,11 @@
 #define D_ScrollBar_Tag (900)
 #define D_ScrollBar_Up_Tag (901)
 #define D_ScrollBar_Down_Tag (902)
+typedef enum{
+    EnumScrollBarTag_ScrollBar = 900,
+    EnumScrollBarTag_Up = 910,
+    EnumScrollBarTag_Down = 920
+}EnumScrollBarTag;
 
 #pragma mark - ScrollBar 主要 scroll layer
 CCScene *ScrollBarLayer::scene()
@@ -39,7 +44,7 @@ bool ScrollBarLayer::init()
         CCSprite *scrollBarBackground = CCSprite::create( "selectgame_dragbar_1.png" );
         scrollBarBackground->setAnchorPoint( CCPointMake(0, 0));
         scrollBarBackground->cocos2d::CCNode::setScaleY(visibleSize.width/scrollBarBackground->getContentSize().width);
-        scrollBarBackground->setTag(D_ScrollBar_Tag);
+        scrollBarBackground->setTag(EnumScrollBarTag_ScrollBar);
         scrollBarBackground->setPosition(ccp( point.x + visibleSize.width - scrollBarBackground->getContentSize().width ,
                                               point.y));
         
@@ -62,7 +67,7 @@ bool ScrollBarLayer::init()
         // 加入 Scroll Bar
         scrollBar = CCScale9Sprite::create( "but_drag_1.png" );
         scrollBar->setAnchorPoint(CCPointMake(0.5, 0.5));
-        scrollBar->setTag(D_ScrollBar_Tag);
+        scrollBar->setTag(EnumScrollBarTag_ScrollBar);
         scrollBar->setPosition( ccp( point.x + visibleSize.width - scrollBar->getContentSize().width*0.5 , visibleSize.height - upButton->getContentSize().height - scrollBar->getContentSize().height*0.5 ) );
         this->addChild( scrollBar , EnumScrollBarLayerZPosition_ScrollBar);
         
@@ -83,6 +88,7 @@ bool ScrollBarLayer::init()
             label->setColor(D_Layer_BlackColor);
             label->setPosition( ccp(150, backgroundSprite->getContentSize().height - 100*i) );
             backgroundSprite->addChild(label , i);
+            
         }
         
         this->setBGMaxDistance(backgroundSprite->getContentSize().height);

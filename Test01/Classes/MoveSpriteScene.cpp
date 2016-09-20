@@ -43,7 +43,7 @@ bool MoveSpriteLayer::init()
     
     // 加入 MenuItem
     CCLabelTTF *createLabel = CCLabelTTF::create( "add Sprite", D_Layer_Label_Font , 36 );
-    createLabel->setColor(ccc3(0,0,0));
+    createLabel->setColor(D_Layer_BlackColor);
     CCMenuItemLabel *menuItemLabel = CCMenuItemLabel::create(createLabel,
                                                              this,
                                                              menu_selector(MoveSpriteLayer::createSprite));

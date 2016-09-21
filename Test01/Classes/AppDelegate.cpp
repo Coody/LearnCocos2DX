@@ -3,6 +3,7 @@
 #include "TreeScene.h"
 #include "MoveSpriteScene.h"
 #include "ScrollBarScene.h"
+#include "PokerGameTableScene.h"
 
 USING_NS_CC;
 
@@ -30,7 +31,8 @@ bool AppDelegate::applicationDidFinishLaunching() {
     // create a scene. it's an autorelease object
 //    CCScene *pScene = TreeLayer::scene();
 //    CCScene *pScene = MoveSpriteLayer::scene();
-    CCScene *pScene = ScrollBarLayer::scene();
+//    CCScene *pScene = ScrollBarLayer::scene();
+    CCScene *pScene = PokerGameTableLayer::scene();
     
 
     // run

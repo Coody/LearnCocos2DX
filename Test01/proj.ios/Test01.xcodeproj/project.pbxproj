@@ -2248,10 +2248,10 @@
 		FB5263811D92994100D079CE /* Rpg */ = {
 			isa = PBXGroup;
 			children = (
-				FB5263831D92997400D079CE /* RPGScene.h */,
-				FB5263821D92997400D079CE /* RPGScene.cpp */,
 				FB5263861D92A45200D079CE /* Npc.h */,
 				FB5263851D92A45200D079CE /* Npc.cpp */,
+				FB5263831D92997400D079CE /* RPGScene.h */,
+				FB5263821D92997400D079CE /* RPGScene.cpp */,
 			);
 			path = Rpg;
 			sourceTree = "<group>";

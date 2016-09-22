@@ -50,8 +50,13 @@ void Npc::goToPoint( cocos2d::CCPoint tempPoint ){
     
     if ( m_bIsArriveTarget == true ) {
         m_bIsArriveTarget = false;
+        
         movePoint.x = tempPoint.x - this->getPositionX();
         movePoint.y = tempPoint.y - this->getPositionY();
+        
+#ifdef D_DEBUG
+        CCLOG( " move(%.0f , %.0f) = \n random(%.0f , %.0f) - original(%.0f , %.0f)" , movePoint.x , movePoint.y , tempPoint.x , tempPoint.y , this->getPositionX() , this->getPositionY() );
+#endif
         
         if( movePoint.y > 0 ){
             this->goUp();
@@ -76,7 +81,6 @@ void Npc::goToPoint( cocos2d::CCPoint tempPoint ){
 void Npc::goUp(){
     
     float tempUpDistance = ( movePoint.y >= 0 ? movePoint.y : movePoint.y*-1 );
-    movePoint.y = 0;
     
     // 計算動畫時間
     float animationTime = 0.5f * (tempUpDistance*0.1) * D_Animation_Speed;
@@ -86,12 +90,13 @@ void Npc::goUp(){
     CCRepeatForever *repeatAnimation = CCRepeatForever::create(CCAnimate::create(m_upAnimation));
     CCMoveBy *moveBy = CCMoveBy::create( animationTime , CCPointMake( 0 , tempUpDistance ));
     animationSprite->runAction(repeatAnimation);
-    animationSprite->runAction(moveBy);
+    this->runAction(moveBy);
     
     // 關閉動畫
     CCDelayTime *delayTime = CCDelayTime::create(animationTime);
+    CCCallFunc *setYZero = CCCallFunc::create( this , callfunc_selector( Npc::setMovePointYZero ));
     CCCallFunc *funcAction = CCCallFunc::create( this , callfunc_selector( Npc::stopAnimation ));
-    CCSequence *sequenceAction = CCSequence::createWithTwoActions(delayTime, funcAction);
+    CCSequence *sequenceAction = CCSequence::create( delayTime , setYZero , funcAction , NULL );
     animationSprite->runAction(sequenceAction);
 }
 
@@ -99,7 +104,6 @@ void Npc::goUp(){
 void Npc::goDown(){
     
     float tempDownDistance = ( movePoint.y >= 0 ? movePoint.y : movePoint.y*-1 );
-    movePoint.y = 0;
     
     // 計算動畫時間
     float animationTime = 0.5f * (tempDownDistance*0.1) * D_Animation_Speed;
@@ -109,20 +113,20 @@ void Npc::goDown(){
     CCRepeatForever *repeatAnimation = CCRepeatForever::create(CCAnimate::create(m_downAnimation));
     CCMoveBy *moveBy = CCMoveBy::create( animationTime , CCPointMake( 0 , tempDownDistance*-1 ));
     animationSprite->runAction(repeatAnimation);
-    animationSprite->runAction(moveBy);
+    this->runAction(moveBy);
     
     // 關閉動畫
     CCDelayTime *delayTime = CCDelayTime::create(animationTime);
+    CCCallFunc *setYZero = CCCallFunc::create( this , callfunc_selector( Npc::setMovePointYZero ));
     CCCallFunc *funcAction = CCCallFunc::create( this , callfunc_selector( Npc::stopAnimation ));
-    CCSequence *sequenceAction = CCSequence::createWithTwoActions(delayTime, funcAction);
-    animationSprite->runAction(sequenceAction);
+    CCSequence *sequenceAction = CCSequence::create( delayTime , setYZero , funcAction , NULL );
+    this->runAction(sequenceAction);
     
 }
 
 // 往左走
 void Npc::goLeft(){
     float tempLeftDistance = ( movePoint.x >= 0 ? movePoint.x : movePoint.x*-1 );
-    movePoint.x = 0;
     
     // 計算動畫時間
     float animationTime = 0.5f * (tempLeftDistance*0.1) * D_Animation_Speed;
@@ -132,19 +136,19 @@ void Npc::goLeft(){
     CCRepeatForever *repeatAnimation = CCRepeatForever::create(CCAnimate::create(m_leftAnimation));
     CCMoveBy *moveBy = CCMoveBy::create( animationTime , CCPointMake( tempLeftDistance*-1 , 0 ));
     animationSprite->runAction(repeatAnimation);
-    animationSprite->runAction(moveBy);
+    this->runAction(moveBy);
     
     // 關閉動畫
     CCDelayTime *delayTime = CCDelayTime::create(animationTime);
+    CCCallFunc *setXZero = CCCallFunc::create( this , callfunc_selector( Npc::setMovePointXZero ));
     CCCallFunc *funcAction = CCCallFunc::create( this , callfunc_selector( Npc::stopAnimation ));
-    CCSequence *sequenceAction = CCSequence::createWithTwoActions(delayTime, funcAction);
-    animationSprite->runAction(sequenceAction);
+    CCSequence *sequenceAction = CCSequence::create( delayTime , setXZero , funcAction , NULL );
+    this->runAction(sequenceAction);
 }
 
 // 往右走
 void Npc::goRight(){
     float tempRightDistance = ( movePoint.x >= 0 ? movePoint.x : movePoint.x*-1 );
-    movePoint.x = 0;
     
     // 計算動畫時間
     float animationTime = 0.5f * (tempRightDistance*0.1) * D_Animation_Speed;
@@ -154,13 +158,22 @@ void Npc::goRight(){
     CCRepeatForever *repeatAnimation = CCRepeatForever::create(CCAnimate::create(m_rightAnimation));
     CCMoveBy *moveBy = CCMoveBy::create( animationTime , CCPointMake( tempRightDistance , 0 ));
     animationSprite->runAction(repeatAnimation);
-    animationSprite->runAction(moveBy);
+    this->runAction(moveBy);
     
     // 關閉動畫
     CCDelayTime *delayTime = CCDelayTime::create(animationTime);
+    CCCallFunc *setXZero = CCCallFunc::create( this , callfunc_selector( Npc::setMovePointXZero ));
     CCCallFunc *funcAction = CCCallFunc::create( this , callfunc_selector( Npc::stopAnimation ));
-    CCSequence *sequenceAction = CCSequence::createWithTwoActions(delayTime, funcAction);
-    animationSprite->runAction(sequenceAction);
+    CCSequence *sequenceAction = CCSequence::create( delayTime , setXZero , funcAction , NULL );
+    this->runAction(sequenceAction);
+}
+
+void Npc::setMovePointXZero(){
+    movePoint.x = 0;
+}
+
+void Npc::setMovePointYZero(){
+    movePoint.y = 0;
 }
 
 void Npc::stopAnimation(){

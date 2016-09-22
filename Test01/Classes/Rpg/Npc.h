@@ -49,6 +49,9 @@ private:
     void goLeft();
     //往右走
     void goRight();
+    // 設定 X & Y 方向為 0
+    void setMovePointXZero();
+    void setMovePointYZero();
     // 停止動畫
     void stopAnimation();
     

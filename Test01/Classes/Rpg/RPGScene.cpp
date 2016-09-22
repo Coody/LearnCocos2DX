@@ -38,7 +38,7 @@ bool RPGLayer::init(){
         CCSize visibleSize = CCDirector::sharedDirector()->getVisibleSize();
         CCPoint point = CCDirector::sharedDirector()->getVisibleOrigin();
         
-        CCLabelTTF *label = CCLabelTTF::create( "產生隨機 NPC" , D_Layer_Label_Font , 50);
+        CCLabelTTF *label = CCLabelTTF::create( "產生隨機 NPC" , D_Layer_Label_Font , 46);
         label->setColor(D_Layer_BlackColor);
         
         CCMenuItemLabel *menuItemLabel = CCMenuItemLabel::create(label, this, menu_selector(RPGLayer::createNpc));
@@ -48,7 +48,7 @@ bool RPGLayer::init(){
         mainMenu->setPosition(CCPointZero);
         this->addChild(mainMenu);
         
-        CCDelayTime *delayTime = CCDelayTime::create(5.0f);
+        CCDelayTime *delayTime = CCDelayTime::create(2.0f);
         CCCallFunc *funcAction = CCCallFunc::create(this, callfunc_selector(RPGLayer::controlNpcMove));
         CCSequence *sequenceAction = CCSequence::createWithTwoActions(delayTime, funcAction);
         CCRepeatForever *repeatAction = CCRepeatForever::create( sequenceAction );
@@ -87,7 +87,15 @@ void RPGLayer::controlNpcMove(){
 CCPoint RPGLayer::getRandomPoint(){
     
     CCSize visibleSize = CCDirector::sharedDirector()->getVisibleSize();
-    return CCPointMake( (arc4random()%(int)(visibleSize.width -40)) - 20 , (arc4random()%(int)visibleSize.height - 40) - 20 );
+    int width = visibleSize.width;
+    int height = visibleSize.height;
+    CCPoint randomPoint = CCPointMake((arc4random() % width - 80) + 40  ,
+                                      (arc4random() % height - 80) + 40);
+#ifdef D_DEBUG
+    CCLOG( " Random: (%.0f , %.0f)" , randomPoint.x , randomPoint.y );
+#endif
+    
+    return randomPoint;
     
 }
 

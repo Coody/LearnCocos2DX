@@ -48,7 +48,7 @@ private:
     // 隨機命令一個 npc 移動
     void controlNpcMove();
     
-    // 給一個隨機的點
+    // 取得一個隨機的點
     cocos2d::CCPoint getRandomPoint();
     
     // 取得圖片真正名稱

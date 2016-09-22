@@ -87,7 +87,7 @@ void RPGLayer::controlNpcMove(){
 CCPoint RPGLayer::getRandomPoint(){
     
     CCSize visibleSize = CCDirector::sharedDirector()->getVisibleSize();
-    return CCPointMake( arc4random()%(int)visibleSize.width , arc4random()%(int)visibleSize.height);
+    return CCPointMake( (arc4random()%(int)(visibleSize.width -40)) - 20 , (arc4random()%(int)visibleSize.height - 40) - 20 );
     
 }
 

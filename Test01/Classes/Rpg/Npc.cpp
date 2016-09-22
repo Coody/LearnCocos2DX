@@ -36,6 +36,8 @@ bool Npc::init( const char *cacheImageName , const char *cachePlistName ){
         CCSprite *animationSprite = CCSprite::createWithSpriteFrameName( firstFileName->getCString() );
         this->addChild(animationSprite , EnumNPCTag_AnimationSprite , EnumNPCTag_AnimationSprite );
         
+        this->setContentSize( animationSprite->getContentSize() );
+        
         return true;
     }
     

@@ -89,8 +89,8 @@ CCPoint RPGLayer::getRandomPoint(){
     CCSize visibleSize = CCDirector::sharedDirector()->getVisibleSize();
     int width = visibleSize.width;
     int height = visibleSize.height;
-    CCPoint randomPoint = CCPointMake((arc4random() % width - 80) + 40  ,
-                                      (arc4random() % height - 80) + 40);
+    CCPoint randomPoint = CCPointMake((arc4random() % width),
+                                      (arc4random() % height));
 #ifdef D_DEBUG
     CCLOG( " Random: (%.0f , %.0f)" , randomPoint.x , randomPoint.y );
 #endif

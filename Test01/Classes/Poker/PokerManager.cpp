@@ -59,7 +59,7 @@ void PokerManager::shuffleCards(){
     }
     
 #ifdef D_DEBUG
-    // 列印出牌組
+    // 在 debug 環境下才會列印出牌組
     for ( int i = 0 ; i < cardArray->count() ; i++ ) 
     {
         CCString *value = (CCString *)cardArray->objectAtIndex(i);

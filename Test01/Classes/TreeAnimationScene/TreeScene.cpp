@@ -81,11 +81,11 @@ void TreeLayer::createAnimationTexture()
     
     // 建立 Tree Sprite
     // why 這裡一定要
-//    CCSprite *tree = CCSprite::createWithSpriteFrameName( "s1_0001.png" );
-//    tree->runAction(CCRepeatForever::create(CCAnimate::create(treeAnimation)));
-//    tree->setPosition(ccp(250, 200));
-//    this->addChild(tree);
-//    treeSpriteArray->addObject(tree);
+    CCSprite *tree = CCSprite::createWithSpriteFrameName( "s1_0001.png" );
+    tree->runAction(CCRepeatForever::create(CCAnimate::create(treeAnimation)));
+    tree->setPosition(ccp(250, 200));
+    this->addChild(tree);
+    treeSpriteArray->addObject(tree);
 }
 
 void TreeLayer::menuCreateCallback(CCObject *pSender)

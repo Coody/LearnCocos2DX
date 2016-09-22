@@ -247,6 +247,14 @@
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765A40DF7441C002DB57D /* CoreGraphics.framework */; };
 		5A050FB11D91A995001BB819 /* PokerManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5A050FAF1D91A995001BB819 /* PokerManager.cpp */; };
+		5A2D98F71D9303840034DEDB /* haku.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5A2D98F61D9303840034DEDB /* haku.plist */; };
+		5A2D98F91D93039E0034DEDB /* kaito.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5A2D98F81D93039E0034DEDB /* kaito.plist */; };
+		5A2D98FB1D9303AA0034DEDB /* len.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5A2D98FA1D9303AA0034DEDB /* len.plist */; };
+		5A2D98FD1D9303BD0034DEDB /* luka.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5A2D98FC1D9303BD0034DEDB /* luka.plist */; };
+		5A2D98FF1D9303CF0034DEDB /* meiko.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5A2D98FE1D9303CF0034DEDB /* meiko.plist */; };
+		5A2D99011D9303E20034DEDB /* miku.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5A2D99001D9303E20034DEDB /* miku.plist */; };
+		5A2D99031D9303FA0034DEDB /* rin.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5A2D99021D9303FA0034DEDB /* rin.plist */; };
+		5A2D99091D9304260034DEDB /* teto.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5A2D99081D9304260034DEDB /* teto.plist */; };
 		5A7624F21D90560800D9CB29 /* btn_options_left.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A7624EC1D90560800D9CB29 /* btn_options_left.png */; };
 		5A7624F31D90560800D9CB29 /* btn_options_off.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A7624ED1D90560800D9CB29 /* btn_options_off.png */; };
 		5A7624F41D90560800D9CB29 /* but_arrow2_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A7624EE1D90560800D9CB29 /* but_arrow2_1.png */; };
@@ -254,6 +262,14 @@
 		5A7624F61D90560800D9CB29 /* but_drag_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A7624F01D90560800D9CB29 /* but_drag_1.png */; };
 		5A7624F71D90560800D9CB29 /* selectgame_dragbar_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A7624F11D90560800D9CB29 /* selectgame_dragbar_1.png */; };
 		5A7624F91D907ABE00D9CB29 /* scrollBG.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A7624F81D907ABE00D9CB29 /* scrollBG.png */; };
+		5AA34E291D92D1E200AEA363 /* haku.png in Resources */ = {isa = PBXBuildFile; fileRef = 5AA34E0C1D92D1E200AEA363 /* haku.png */; };
+		5AA34E2B1D92D1E200AEA363 /* kaito.png in Resources */ = {isa = PBXBuildFile; fileRef = 5AA34E0F1D92D1E200AEA363 /* kaito.png */; };
+		5AA34E2D1D92D1E200AEA363 /* len.png in Resources */ = {isa = PBXBuildFile; fileRef = 5AA34E121D92D1E200AEA363 /* len.png */; };
+		5AA34E2F1D92D1E200AEA363 /* luka.png in Resources */ = {isa = PBXBuildFile; fileRef = 5AA34E151D92D1E200AEA363 /* luka.png */; };
+		5AA34E311D92D1E200AEA363 /* meiko.png in Resources */ = {isa = PBXBuildFile; fileRef = 5AA34E181D92D1E200AEA363 /* meiko.png */; };
+		5AA34E331D92D1E200AEA363 /* miku.png in Resources */ = {isa = PBXBuildFile; fileRef = 5AA34E1B1D92D1E200AEA363 /* miku.png */; };
+		5AA34E351D92D1E200AEA363 /* rin.png in Resources */ = {isa = PBXBuildFile; fileRef = 5AA34E1E1D92D1E200AEA363 /* rin.png */; };
+		5AA34E3B1D92D1E200AEA363 /* teto.png in Resources */ = {isa = PBXBuildFile; fileRef = 5AA34E271D92D1E200AEA363 /* teto.png */; };
 		7855E0E1153FEF240059DD9A /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 7855E0DF153FEF240059DD9A /* Default.png */; };
 		BF171245129291EC00B8313A /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB012928DE900B8313A /* OpenGLES.framework */; };
 		BF1712461292920000B8313A /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB212928DE900B8313A /* libxml2.dylib */; };
@@ -268,6 +284,8 @@
 		D4EF949C15BD2D8E00D803EB /* Icon-114.png in Resources */ = {isa = PBXBuildFile; fileRef = D4EF949B15BD2D8E00D803EB /* Icon-114.png */; };
 		D4EF949E15BD2D9600D803EB /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = D4EF949D15BD2D9600D803EB /* Icon-72.png */; };
 		D4EF94A015BD2D9800D803EB /* Icon-144.png in Resources */ = {isa = PBXBuildFile; fileRef = D4EF949F15BD2D9800D803EB /* Icon-144.png */; };
+		FB5263841D92997400D079CE /* RPGScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FB5263821D92997400D079CE /* RPGScene.cpp */; };
+		FB5263871D92A45200D079CE /* Npc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FB5263851D92A45200D079CE /* Npc.cpp */; };
 		FB6586671D923C510067BEC3 /* pokers_w01.png in Resources */ = {isa = PBXBuildFile; fileRef = FB6586661D923C510067BEC3 /* pokers_w01.png */; };
 		FB6C0B351D89513C003EAB04 /* s1.plist in Resources */ = {isa = PBXBuildFile; fileRef = FB6C0B331D89513C003EAB04 /* s1.plist */; };
 		FB6C0B361D89513C003EAB04 /* s1.png in Resources */ = {isa = PBXBuildFile; fileRef = FB6C0B341D89513C003EAB04 /* s1.png */; };
@@ -852,6 +870,15 @@
 		37C62C0718E156AE00D16FC4 /* ExtensionExport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExtensionExport.h; sourceTree = "<group>"; };
 		5A050FAF1D91A995001BB819 /* PokerManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PokerManager.cpp; sourceTree = "<group>"; };
 		5A050FB01D91A995001BB819 /* PokerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PokerManager.h; sourceTree = "<group>"; };
+		5A2D98F61D9303840034DEDB /* haku.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = haku.plist; sourceTree = "<group>"; };
+		5A2D98F81D93039E0034DEDB /* kaito.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = kaito.plist; sourceTree = "<group>"; };
+		5A2D98FA1D9303AA0034DEDB /* len.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = len.plist; sourceTree = "<group>"; };
+		5A2D98FC1D9303BD0034DEDB /* luka.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = luka.plist; sourceTree = "<group>"; };
+		5A2D98FE1D9303CF0034DEDB /* meiko.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = meiko.plist; sourceTree = "<group>"; };
+		5A2D99001D9303E20034DEDB /* miku.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = miku.plist; sourceTree = "<group>"; };
+		5A2D99021D9303FA0034DEDB /* rin.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = rin.plist; sourceTree = "<group>"; };
+		5A2D99081D9304260034DEDB /* teto.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = teto.plist; sourceTree = "<group>"; };
+		5A2D990A1D930D7C0034DEDB /* NpcConstant.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NpcConstant.h; sourceTree = "<group>"; };
 		5A7624EC1D90560800D9CB29 /* btn_options_left.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_options_left.png; sourceTree = "<group>"; };
 		5A7624ED1D90560800D9CB29 /* btn_options_off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_options_off.png; sourceTree = "<group>"; };
 		5A7624EE1D90560800D9CB29 /* but_arrow2_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = but_arrow2_1.png; sourceTree = "<group>"; };
@@ -859,6 +886,14 @@
 		5A7624F01D90560800D9CB29 /* but_drag_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = but_drag_1.png; sourceTree = "<group>"; };
 		5A7624F11D90560800D9CB29 /* selectgame_dragbar_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = selectgame_dragbar_1.png; sourceTree = "<group>"; };
 		5A7624F81D907ABE00D9CB29 /* scrollBG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = scrollBG.png; sourceTree = "<group>"; };
+		5AA34E0C1D92D1E200AEA363 /* haku.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = haku.png; sourceTree = "<group>"; };
+		5AA34E0F1D92D1E200AEA363 /* kaito.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kaito.png; sourceTree = "<group>"; };
+		5AA34E121D92D1E200AEA363 /* len.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = len.png; sourceTree = "<group>"; };
+		5AA34E151D92D1E200AEA363 /* luka.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = luka.png; sourceTree = "<group>"; };
+		5AA34E181D92D1E200AEA363 /* meiko.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = meiko.png; sourceTree = "<group>"; };
+		5AA34E1B1D92D1E200AEA363 /* miku.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = miku.png; sourceTree = "<group>"; };
+		5AA34E1E1D92D1E200AEA363 /* rin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rin.png; sourceTree = "<group>"; };
+		5AA34E271D92D1E200AEA363 /* teto.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = teto.png; sourceTree = "<group>"; };
 		7855E0DF153FEF240059DD9A /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = SOURCE_ROOT; };
 		BF170DB012928DE900B8313A /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		BF170DB212928DE900B8313A /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
@@ -874,6 +909,10 @@
 		D4EF949D15BD2D9600D803EB /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-72.png"; path = "../proj.ios/Icon-72.png"; sourceTree = "<group>"; };
 		D4EF949F15BD2D9800D803EB /* Icon-144.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-144.png"; path = "../proj.ios/Icon-144.png"; sourceTree = "<group>"; };
 		D4F9F37B12E54555005CA6D2 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = SOURCE_ROOT; };
+		FB5263821D92997400D079CE /* RPGScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RPGScene.cpp; sourceTree = "<group>"; };
+		FB5263831D92997400D079CE /* RPGScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RPGScene.h; sourceTree = "<group>"; };
+		FB5263851D92A45200D079CE /* Npc.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Npc.cpp; sourceTree = "<group>"; };
+		FB5263861D92A45200D079CE /* Npc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Npc.h; sourceTree = "<group>"; };
 		FB6586661D923C510067BEC3 /* pokers_w01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pokers_w01.png; sourceTree = "<group>"; };
 		FB6C0B331D89513C003EAB04 /* s1.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = s1.plist; sourceTree = "<group>"; };
 		FB6C0B341D89513C003EAB04 /* s1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = s1.png; sourceTree = "<group>"; };
@@ -1471,6 +1510,7 @@
 				FB72B8491D912BAF004B06A0 /* MoveSpriteScene */,
 				FB72B8511D912BAF004B06A0 /* ScrollBarScene */,
 				FB72B84C1D912BAF004B06A0 /* Poker */,
+				FB5263811D92994100D079CE /* Rpg */,
 				1AFAF8B416D35DE700DB1158 /* AppDelegate.h */,
 				1AFAF8B316D35DE700DB1158 /* AppDelegate.cpp */,
 			);
@@ -2095,9 +2135,97 @@
 			path = ScrollBar;
 			sourceTree = "<group>";
 		};
+		5AA34E091D92D1E200AEA363 /* rpg */ = {
+			isa = PBXGroup;
+			children = (
+				5AA34E0A1D92D1E200AEA363 /* haku_plist */,
+				5AA34E0D1D92D1E200AEA363 /* kaito_plist */,
+				5AA34E101D92D1E200AEA363 /* len_plist */,
+				5AA34E131D92D1E200AEA363 /* luka_plist */,
+				5AA34E161D92D1E200AEA363 /* meiko_plist */,
+				5AA34E191D92D1E200AEA363 /* miku_plist */,
+				5AA34E1C1D92D1E200AEA363 /* rin_plist */,
+				5AA34E251D92D1E200AEA363 /* teto_plist */,
+			);
+			path = rpg;
+			sourceTree = "<group>";
+		};
+		5AA34E0A1D92D1E200AEA363 /* haku_plist */ = {
+			isa = PBXGroup;
+			children = (
+				5A2D98F61D9303840034DEDB /* haku.plist */,
+				5AA34E0C1D92D1E200AEA363 /* haku.png */,
+			);
+			path = haku_plist;
+			sourceTree = "<group>";
+		};
+		5AA34E0D1D92D1E200AEA363 /* kaito_plist */ = {
+			isa = PBXGroup;
+			children = (
+				5A2D98F81D93039E0034DEDB /* kaito.plist */,
+				5AA34E0F1D92D1E200AEA363 /* kaito.png */,
+			);
+			path = kaito_plist;
+			sourceTree = "<group>";
+		};
+		5AA34E101D92D1E200AEA363 /* len_plist */ = {
+			isa = PBXGroup;
+			children = (
+				5A2D98FA1D9303AA0034DEDB /* len.plist */,
+				5AA34E121D92D1E200AEA363 /* len.png */,
+			);
+			path = len_plist;
+			sourceTree = "<group>";
+		};
+		5AA34E131D92D1E200AEA363 /* luka_plist */ = {
+			isa = PBXGroup;
+			children = (
+				5A2D98FC1D9303BD0034DEDB /* luka.plist */,
+				5AA34E151D92D1E200AEA363 /* luka.png */,
+			);
+			path = luka_plist;
+			sourceTree = "<group>";
+		};
+		5AA34E161D92D1E200AEA363 /* meiko_plist */ = {
+			isa = PBXGroup;
+			children = (
+				5A2D98FE1D9303CF0034DEDB /* meiko.plist */,
+				5AA34E181D92D1E200AEA363 /* meiko.png */,
+			);
+			path = meiko_plist;
+			sourceTree = "<group>";
+		};
+		5AA34E191D92D1E200AEA363 /* miku_plist */ = {
+			isa = PBXGroup;
+			children = (
+				5A2D99001D9303E20034DEDB /* miku.plist */,
+				5AA34E1B1D92D1E200AEA363 /* miku.png */,
+			);
+			path = miku_plist;
+			sourceTree = "<group>";
+		};
+		5AA34E1C1D92D1E200AEA363 /* rin_plist */ = {
+			isa = PBXGroup;
+			children = (
+				5A2D99021D9303FA0034DEDB /* rin.plist */,
+				5AA34E1E1D92D1E200AEA363 /* rin.png */,
+			);
+			path = rin_plist;
+			sourceTree = "<group>";
+		};
+		5AA34E251D92D1E200AEA363 /* teto_plist */ = {
+			isa = PBXGroup;
+			children = (
+				5A2D99081D9304260034DEDB /* teto.plist */,
+				5AA34E271D92D1E200AEA363 /* teto.png */,
+			);
+			path = teto_plist;
+			sourceTree = "<group>";
+		};
 		78C7DDAA14EBA5050085D0C2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				5AA34E091D92D1E200AEA363 /* rpg */,
 				FBF27B771D9172CC0020F65F /* Poker */,
 				5A7624EB1D90560800D9CB29 /* ScrollBar */,
 				FB6C0B331D89513C003EAB04 /* s1.plist */,
@@ -2117,12 +2245,24 @@
 			path = ../Resources;
 			sourceTree = "<group>";
 		};
+		FB5263811D92994100D079CE /* Rpg */ = {
+			isa = PBXGroup;
+			children = (
+				FB5263831D92997400D079CE /* RPGScene.h */,
+				FB5263821D92997400D079CE /* RPGScene.cpp */,
+				FB5263861D92A45200D079CE /* Npc.h */,
+				FB5263851D92A45200D079CE /* Npc.cpp */,
+			);
+			path = Rpg;
+			sourceTree = "<group>";
+		};
 		FB72B8441D912B17004B06A0 /* AppDefine */ = {
 			isa = PBXGroup;
 			children = (
 				FB72B8451D912B17004B06A0 /* LearnCocos2DConstant.h */,
 				FB72B85D1D912BFE004B06A0 /* PokerDefine.h */,
 				FB72B8601D91450B004B06A0 /* PokerResource.h */,
+				5A2D990A1D930D7C0034DEDB /* NpcConstant.h */,
 			);
 			path = AppDefine;
 			sourceTree = "<group>";
@@ -2268,7 +2408,7 @@
 				LastUpgradeCheck = 0430;
 				TargetAttributes = {
 					1D6058900D05DD3D006BFB54 = {
-						DevelopmentTeam = 3965S69QEJ;
+						DevelopmentTeam = E3HA4ULF6C;
 						ProvisioningStyle = Manual;
 					};
 				};
@@ -2317,8 +2457,11 @@
 				FB6C0B361D89513C003EAB04 /* s1.png in Resources */,
 				FBF27BC31D9172CC0020F65F /* pokers_d07.png in Resources */,
 				FBF27BBB1D9172CC0020F65F /* pokers_c12.png in Resources */,
+				5AA34E2D1D92D1E200AEA363 /* len.png in Resources */,
+				5AA34E2B1D92D1E200AEA363 /* kaito.png in Resources */,
 				FBF27BD31D9172CC0020F65F /* pokers_h10.png in Resources */,
 				FBF27BBD1D9172CC0020F65F /* pokers_d01.png in Resources */,
+				5A2D99091D9304260034DEDB /* teto.plist in Resources */,
 				FBF27BE11D9172CC0020F65F /* pokers_s11.png in Resources */,
 				FBF27BD41D9172CC0020F65F /* pokers_h11.png in Resources */,
 				FBF27BCD1D9172CC0020F65F /* pokers_h04.png in Resources */,
@@ -2331,12 +2474,16 @@
 				FBF27BDB1D9172CC0020F65F /* pokers_s05.png in Resources */,
 				FBF27BB41D9172CC0020F65F /* pokers_c05.png in Resources */,
 				FBF27BC11D9172CC0020F65F /* pokers_d05.png in Resources */,
+				5AA34E291D92D1E200AEA363 /* haku.png in Resources */,
 				7855E0E1153FEF240059DD9A /* Default.png in Resources */,
 				FBF27BC41D9172CC0020F65F /* pokers_d08.png in Resources */,
+				5AA34E351D92D1E200AEA363 /* rin.png in Resources */,
 				FBF27BBC1D9172CC0020F65F /* pokers_c13.png in Resources */,
+				5A2D98F91D93039E0034DEDB /* kaito.plist in Resources */,
 				FBF27BB71D9172CC0020F65F /* pokers_c08.png in Resources */,
 				FBF27BD91D9172CC0020F65F /* pokers_s03.png in Resources */,
 				FBF27BC61D9172CC0020F65F /* pokers_d10.png in Resources */,
+				5AA34E3B1D92D1E200AEA363 /* teto.png in Resources */,
 				FBF27BB51D9172CC0020F65F /* pokers_c06.png in Resources */,
 				5A7624F91D907ABE00D9CB29 /* scrollBG.png in Resources */,
 				D4EF949A15BD2D8B00D803EB /* Icon-57.png in Resources */,
@@ -2354,7 +2501,9 @@
 				FBF27BD51D9172CC0020F65F /* pokers_h12.png in Resources */,
 				FBF27BC01D9172CC0020F65F /* pokers_d04.png in Resources */,
 				FBF27BC91D9172CC0020F65F /* pokers_d13.png in Resources */,
+				5AA34E311D92D1E200AEA363 /* meiko.png in Resources */,
 				FBF27BE01D9172CC0020F65F /* pokers_s10.png in Resources */,
+				5A2D99011D9303E20034DEDB /* miku.plist in Resources */,
 				D4EF94A015BD2D9800D803EB /* Icon-144.png in Resources */,
 				FBF27BDC1D9172CC0020F65F /* pokers_s06.png in Resources */,
 				5A7624F51D90560800D9CB29 /* but_arrow_1.png in Resources */,
@@ -2365,15 +2514,20 @@
 				FBF27BCA1D9172CC0020F65F /* pokers_h01.png in Resources */,
 				5A7624F21D90560800D9CB29 /* btn_options_left.png in Resources */,
 				FBF27BAF1D9172CC0020F65F /* pokers_back.png in Resources */,
+				5A2D98FB1D9303AA0034DEDB /* len.plist in Resources */,
 				FBF27BBF1D9172CC0020F65F /* pokers_d03.png in Resources */,
 				FB6586671D923C510067BEC3 /* pokers_w01.png in Resources */,
 				5A7624F41D90560800D9CB29 /* but_arrow2_1.png in Resources */,
+				5A2D99031D9303FA0034DEDB /* rin.plist in Resources */,
+				5AA34E331D92D1E200AEA363 /* miku.png in Resources */,
 				FBF27BB21D9172CC0020F65F /* pokers_c03.png in Resources */,
+				5A2D98FD1D9303BD0034DEDB /* luka.plist in Resources */,
 				FBF27BE31D9172CC0020F65F /* pokers_s13.png in Resources */,
 				FBF27BC81D9172CC0020F65F /* pokers_d12.png in Resources */,
 				FBF27BC71D9172CC0020F65F /* pokers_d11.png in Resources */,
 				FBF27BB91D9172CC0020F65F /* pokers_c10.png in Resources */,
 				FBF27BBA1D9172CC0020F65F /* pokers_c11.png in Resources */,
+				5AA34E2F1D92D1E200AEA363 /* luka.png in Resources */,
 				D446FD6E16102124000ADA7B /* Default@2x.png in Resources */,
 				15A3D9961682F7F9002FB0C5 /* CMakeLists.txt in Resources */,
 				1AFAF8BC16D35E4900DB1158 /* CloseNormal.png in Resources */,
@@ -2383,10 +2537,12 @@
 				FBF27BBE1D9172CC0020F65F /* pokers_d02.png in Resources */,
 				FBF27BC21D9172CC0020F65F /* pokers_d06.png in Resources */,
 				FBF27BDF1D9172CC0020F65F /* pokers_s09.png in Resources */,
+				5A2D98F71D9303840034DEDB /* haku.plist in Resources */,
 				FBF27BDD1D9172CC0020F65F /* pokers_s07.png in Resources */,
 				1AFAF8BE16D35E4900DB1158 /* HelloWorld.png in Resources */,
 				FBF27BC51D9172CC0020F65F /* pokers_d09.png in Resources */,
 				FBF27BD11D9172CC0020F65F /* pokers_h08.png in Resources */,
+				5A2D98FF1D9303CF0034DEDB /* meiko.plist in Resources */,
 				FBF27BD01D9172CC0020F65F /* pokers_h07.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2436,6 +2592,7 @@
 				15A3D9181682F7D5002FB0C5 /* b2ChainAndPolygonContact.cpp in Sources */,
 				15A3D9191682F7D5002FB0C5 /* b2CircleContact.cpp in Sources */,
 				15C0B586196D412F007F909D /* ButtonReader.cpp in Sources */,
+				FB5263841D92997400D079CE /* RPGScene.cpp in Sources */,
 				15C0B57D196D412F007F909D /* UILabelBMFont.cpp in Sources */,
 				15A3D91A1682F7D5002FB0C5 /* b2Contact.cpp in Sources */,
 				15C0B593196D412F007F909D /* WidgetReader.cpp in Sources */,
@@ -2476,6 +2633,7 @@
 				15A3D99A1682F7F9002FB0C5 /* cpGearJoint.c in Sources */,
 				15C0B569196D412F007F909D /* CCComAttribute.cpp in Sources */,
 				15A3D99B1682F7F9002FB0C5 /* cpGrooveJoint.c in Sources */,
+				FB5263871D92A45200D079CE /* Npc.cpp in Sources */,
 				15C0B57C196D412F007F909D /* UILabelAtlas.cpp in Sources */,
 				15A3D99C1682F7F9002FB0C5 /* cpPinJoint.c in Sources */,
 				15C0B55F196D412F007F909D /* CCDisplayManager.cpp in Sources */,

@@ -4,6 +4,7 @@
 #include "MoveSpriteScene.h"
 #include "ScrollBarScene.h"
 #include "PokerGameTableScene.h"
+#include "RPGScene.h"
 
 USING_NS_CC;
 
@@ -32,8 +33,8 @@ bool AppDelegate::applicationDidFinishLaunching() {
 //    CCScene *pScene = TreeLayer::scene();
 //    CCScene *pScene = MoveSpriteLayer::scene();
 //    CCScene *pScene = ScrollBarLayer::scene();
-    CCScene *pScene = PokerGameTableLayer::scene();
-    
+//    CCScene *pScene = PokerGameTableLayer::scene();
+    CCScene *pScene = RPGLayer::scene();
 
     // run
     pDirector->runWithScene(pScene);

@@ -1,10 +1,11 @@
 #include "AppDelegate.h"
 //#include "HelloWorldScene.h"
-#include "TreeScene.h"
-#include "MoveSpriteScene.h"
-#include "ScrollBarScene.h"
-#include "PokerGameTableScene.h"
-#include "RPGScene.h"
+//#include "TreeScene.h"
+//#include "MoveSpriteScene.h"
+//#include "ScrollBarScene.h"
+//#include "PokerGameTableScene.h"
+//#include "RPGScene.h"
+#include "NumbersScene.h"
 
 USING_NS_CC;
 
@@ -20,8 +21,11 @@ bool AppDelegate::applicationDidFinishLaunching() {
     // initialize director
     CCDirector* pDirector = CCDirector::sharedDirector();
     CCEGLView* pEGLView = CCEGLView::sharedOpenGLView();
-
+    
     pDirector->setOpenGLView(pEGLView);
+    
+    pEGLView->setDesignResolutionSize(pDirector->getVisibleSize().width,
+                                      pDirector->getVisibleSize().height, kResolutionShowAll);
 	
     // turn on display FPS
     pDirector->setDisplayStats(true);
@@ -34,7 +38,8 @@ bool AppDelegate::applicationDidFinishLaunching() {
 //    CCScene *pScene = MoveSpriteLayer::scene();
 //    CCScene *pScene = ScrollBarLayer::scene();
 //    CCScene *pScene = PokerGameTableLayer::scene();
-    CCScene *pScene = RPGLayer::scene();
+//    CCScene *pScene = RPGLayer::scene();
+    CCScene *pScene = NumbersLayer::scene();
 
     // run
     pDirector->runWithScene(pScene);

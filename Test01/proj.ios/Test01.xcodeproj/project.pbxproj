@@ -270,6 +270,16 @@
 		5AA34E331D92D1E200AEA363 /* miku.png in Resources */ = {isa = PBXBuildFile; fileRef = 5AA34E1B1D92D1E200AEA363 /* miku.png */; };
 		5AA34E351D92D1E200AEA363 /* rin.png in Resources */ = {isa = PBXBuildFile; fileRef = 5AA34E1E1D92D1E200AEA363 /* rin.png */; };
 		5AA34E3B1D92D1E200AEA363 /* teto.png in Resources */ = {isa = PBXBuildFile; fileRef = 5AA34E271D92D1E200AEA363 /* teto.png */; };
+		6F1ED8021D9C076100BF64F4 /* NumberManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6F1ED8001D9C076100BF64F4 /* NumberManager.cpp */; };
+		6F3B5E461D9BD579007C441C /* NumbersScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6F3B5E401D9BD579007C441C /* NumbersScene.cpp */; };
+		6F3B5E481D9BD6B9007C441C /* libstdc++.6.0.9.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F3B5E471D9BD6B9007C441C /* libstdc++.6.0.9.tbd */; };
+		6FC09C721D9C0D6400A5D468 /* JPNumberManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6FC09C701D9C0D6400A5D468 /* JPNumberManager.cpp */; };
+		6FC09C7A1D9C0FD200A5D468 /* impact64.fnt in Resources */ = {isa = PBXBuildFile; fileRef = 6FC09C741D9C0FD200A5D468 /* impact64.fnt */; };
+		6FC09C7B1D9C0FD200A5D468 /* impact64.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FC09C751D9C0FD200A5D468 /* impact64.png */; };
+		6FC09C7C1D9C0FD200A5D468 /* num_score_board_score_w.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FC09C761D9C0FD200A5D468 /* num_score_board_score_w.png */; };
+		6FC09C7D1D9C0FD200A5D468 /* set.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FC09C771D9C0FD200A5D468 /* set.png */; };
+		6FC09C7E1D9C0FD200A5D468 /* settel_g.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FC09C781D9C0FD200A5D468 /* settel_g.png */; };
+		6FC09C7F1D9C0FD200A5D468 /* settel_r.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FC09C791D9C0FD200A5D468 /* settel_r.png */; };
 		7855E0E1153FEF240059DD9A /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 7855E0DF153FEF240059DD9A /* Default.png */; };
 		BF171245129291EC00B8313A /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB012928DE900B8313A /* OpenGLES.framework */; };
 		BF1712461292920000B8313A /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB212928DE900B8313A /* libxml2.dylib */; };
@@ -286,6 +296,7 @@
 		D4EF94A015BD2D9800D803EB /* Icon-144.png in Resources */ = {isa = PBXBuildFile; fileRef = D4EF949F15BD2D9800D803EB /* Icon-144.png */; };
 		FB5263841D92997400D079CE /* RPGScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FB5263821D92997400D079CE /* RPGScene.cpp */; };
 		FB5263871D92A45200D079CE /* Npc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FB5263851D92A45200D079CE /* Npc.cpp */; };
+		FB5B20E91D9D08F700F74FA8 /* OpenGLColckScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FB5B20E71D9D08F700F74FA8 /* OpenGLColckScene.cpp */; };
 		FB6586671D923C510067BEC3 /* pokers_w01.png in Resources */ = {isa = PBXBuildFile; fileRef = FB6586661D923C510067BEC3 /* pokers_w01.png */; };
 		FB6C0B351D89513C003EAB04 /* s1.plist in Resources */ = {isa = PBXBuildFile; fileRef = FB6C0B331D89513C003EAB04 /* s1.plist */; };
 		FB6C0B361D89513C003EAB04 /* s1.png in Resources */ = {isa = PBXBuildFile; fileRef = FB6C0B341D89513C003EAB04 /* s1.png */; };
@@ -894,6 +905,21 @@
 		5AA34E1B1D92D1E200AEA363 /* miku.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = miku.png; sourceTree = "<group>"; };
 		5AA34E1E1D92D1E200AEA363 /* rin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rin.png; sourceTree = "<group>"; };
 		5AA34E271D92D1E200AEA363 /* teto.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = teto.png; sourceTree = "<group>"; };
+		6F1ED8001D9C076100BF64F4 /* NumberManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NumberManager.cpp; sourceTree = "<group>"; };
+		6F1ED8011D9C076100BF64F4 /* NumberManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NumberManager.h; sourceTree = "<group>"; };
+		6F3B5E401D9BD579007C441C /* NumbersScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NumbersScene.cpp; sourceTree = "<group>"; };
+		6F3B5E411D9BD579007C441C /* NumbersScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NumbersScene.h; sourceTree = "<group>"; };
+		6F3B5E471D9BD6B9007C441C /* libstdc++.6.0.9.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.6.0.9.tbd"; path = "usr/lib/libstdc++.6.0.9.tbd"; sourceTree = SDKROOT; };
+		6F3B5E491D9BD710007C441C /* libstdc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.tbd"; path = "usr/lib/libstdc++.tbd"; sourceTree = SDKROOT; };
+		6F3B5E4B1D9BD717007C441C /* libstdc++.6.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.6.tbd"; path = "usr/lib/libstdc++.6.tbd"; sourceTree = SDKROOT; };
+		6FC09C701D9C0D6400A5D468 /* JPNumberManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = JPNumberManager.cpp; sourceTree = "<group>"; };
+		6FC09C711D9C0D6400A5D468 /* JPNumberManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPNumberManager.h; sourceTree = "<group>"; };
+		6FC09C741D9C0FD200A5D468 /* impact64.fnt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = impact64.fnt; sourceTree = "<group>"; };
+		6FC09C751D9C0FD200A5D468 /* impact64.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = impact64.png; sourceTree = "<group>"; };
+		6FC09C761D9C0FD200A5D468 /* num_score_board_score_w.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = num_score_board_score_w.png; sourceTree = "<group>"; };
+		6FC09C771D9C0FD200A5D468 /* set.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = set.png; sourceTree = "<group>"; };
+		6FC09C781D9C0FD200A5D468 /* settel_g.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settel_g.png; sourceTree = "<group>"; };
+		6FC09C791D9C0FD200A5D468 /* settel_r.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settel_r.png; sourceTree = "<group>"; };
 		7855E0DF153FEF240059DD9A /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = SOURCE_ROOT; };
 		BF170DB012928DE900B8313A /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		BF170DB212928DE900B8313A /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
@@ -913,6 +939,8 @@
 		FB5263831D92997400D079CE /* RPGScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RPGScene.h; sourceTree = "<group>"; };
 		FB5263851D92A45200D079CE /* Npc.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Npc.cpp; sourceTree = "<group>"; };
 		FB5263861D92A45200D079CE /* Npc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Npc.h; sourceTree = "<group>"; };
+		FB5B20E71D9D08F700F74FA8 /* OpenGLColckScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OpenGLColckScene.cpp; sourceTree = "<group>"; };
+		FB5B20E81D9D08F700F74FA8 /* OpenGLColckScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpenGLColckScene.h; sourceTree = "<group>"; };
 		FB6586661D923C510067BEC3 /* pokers_w01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pokers_w01.png; sourceTree = "<group>"; };
 		FB6C0B331D89513C003EAB04 /* s1.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = s1.plist; sourceTree = "<group>"; };
 		FB6C0B341D89513C003EAB04 /* s1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = s1.png; sourceTree = "<group>"; };
@@ -992,6 +1020,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6F3B5E481D9BD6B9007C441C /* libstdc++.6.0.9.tbd in Frameworks */,
 				15A3DA6A1682F886002FB0C5 /* libcocos2dx.a in Frameworks */,
 				1ACB3244164770DE00914215 /* libcurl.a in Frameworks */,
 				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
@@ -1504,6 +1533,7 @@
 		15AA9C4015B7EC450033D6C2 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				FB5B20E61D9CF9FE00F74FA8 /* OpenGLClock */,
 				FB72B8441D912B17004B06A0 /* AppDefine */,
 				FB72B8461D912BAF004B06A0 /* HelloWorldScene */,
 				FB72B8541D912BAF004B06A0 /* TreeAnimationScene */,
@@ -1511,6 +1541,7 @@
 				FB72B8511D912BAF004B06A0 /* ScrollBarScene */,
 				FB72B84C1D912BAF004B06A0 /* Poker */,
 				FB5263811D92994100D079CE /* Rpg */,
+				6F3B5E371D9BD579007C441C /* LabelScene */,
 				1AFAF8B416D35DE700DB1158 /* AppDelegate.h */,
 				1AFAF8B316D35DE700DB1158 /* AppDelegate.cpp */,
 			);
@@ -2106,6 +2137,9 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6F3B5E4B1D9BD717007C441C /* libstdc++.6.tbd */,
+				6F3B5E491D9BD710007C441C /* libstdc++.tbd */,
+				6F3B5E471D9BD6B9007C441C /* libstdc++.6.0.9.tbd */,
 				1ACB3243164770DE00914215 /* libcurl.a */,
 				BF170DB212928DE900B8313A /* libxml2.dylib */,
 				BF170DB412928DE900B8313A /* libz.dylib */,
@@ -2222,9 +2256,36 @@
 			path = teto_plist;
 			sourceTree = "<group>";
 		};
+		6F3B5E371D9BD579007C441C /* LabelScene */ = {
+			isa = PBXGroup;
+			children = (
+				6F3B5E411D9BD579007C441C /* NumbersScene.h */,
+				6F3B5E401D9BD579007C441C /* NumbersScene.cpp */,
+				6FC09C711D9C0D6400A5D468 /* JPNumberManager.h */,
+				6FC09C701D9C0D6400A5D468 /* JPNumberManager.cpp */,
+				6F1ED8011D9C076100BF64F4 /* NumberManager.h */,
+				6F1ED8001D9C076100BF64F4 /* NumberManager.cpp */,
+			);
+			path = LabelScene;
+			sourceTree = "<group>";
+		};
+		6FC09C731D9C0FD200A5D468 /* Label */ = {
+			isa = PBXGroup;
+			children = (
+				6FC09C741D9C0FD200A5D468 /* impact64.fnt */,
+				6FC09C751D9C0FD200A5D468 /* impact64.png */,
+				6FC09C761D9C0FD200A5D468 /* num_score_board_score_w.png */,
+				6FC09C771D9C0FD200A5D468 /* set.png */,
+				6FC09C781D9C0FD200A5D468 /* settel_g.png */,
+				6FC09C791D9C0FD200A5D468 /* settel_r.png */,
+			);
+			path = Label;
+			sourceTree = "<group>";
+		};
 		78C7DDAA14EBA5050085D0C2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				6FC09C731D9C0FD200A5D468 /* Label */,
 				5AA34E091D92D1E200AEA363 /* rpg */,
 				FBF27B771D9172CC0020F65F /* Poker */,
 				5A7624EB1D90560800D9CB29 /* ScrollBar */,
@@ -2254,6 +2315,15 @@
 				FB5263821D92997400D079CE /* RPGScene.cpp */,
 			);
 			path = Rpg;
+			sourceTree = "<group>";
+		};
+		FB5B20E61D9CF9FE00F74FA8 /* OpenGLClock */ = {
+			isa = PBXGroup;
+			children = (
+				FB5B20E81D9D08F700F74FA8 /* OpenGLColckScene.h */,
+				FB5B20E71D9D08F700F74FA8 /* OpenGLColckScene.cpp */,
+			);
+			path = OpenGLClock;
 			sourceTree = "<group>";
 		};
 		FB72B8441D912B17004B06A0 /* AppDefine */ = {
@@ -2408,7 +2478,7 @@
 				LastUpgradeCheck = 0430;
 				TargetAttributes = {
 					1D6058900D05DD3D006BFB54 = {
-						DevelopmentTeam = MBVCMN6CRK;
+						DevelopmentTeam = E3HA4ULF6C;
 						ProvisioningStyle = Manual;
 					};
 				};
@@ -2454,6 +2524,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FBF27BB01D9172CC0020F65F /* pokers_c01.png in Resources */,
+				6FC09C7F1D9C0FD200A5D468 /* settel_r.png in Resources */,
 				FB6C0B361D89513C003EAB04 /* s1.png in Resources */,
 				FBF27BC31D9172CC0020F65F /* pokers_d07.png in Resources */,
 				FBF27BBB1D9172CC0020F65F /* pokers_c12.png in Resources */,
@@ -2464,6 +2535,7 @@
 				5A2D99091D9304260034DEDB /* teto.plist in Resources */,
 				FBF27BE11D9172CC0020F65F /* pokers_s11.png in Resources */,
 				FBF27BD41D9172CC0020F65F /* pokers_h11.png in Resources */,
+				6FC09C7B1D9C0FD200A5D468 /* impact64.png in Resources */,
 				FBF27BCD1D9172CC0020F65F /* pokers_h04.png in Resources */,
 				FBF27BB11D9172CC0020F65F /* pokers_c02.png in Resources */,
 				5A7624F71D90560800D9CB29 /* selectgame_dragbar_1.png in Resources */,
@@ -2474,6 +2546,7 @@
 				FBF27BDB1D9172CC0020F65F /* pokers_s05.png in Resources */,
 				FBF27BB41D9172CC0020F65F /* pokers_c05.png in Resources */,
 				FBF27BC11D9172CC0020F65F /* pokers_d05.png in Resources */,
+				6FC09C7E1D9C0FD200A5D468 /* settel_g.png in Resources */,
 				5AA34E291D92D1E200AEA363 /* haku.png in Resources */,
 				7855E0E1153FEF240059DD9A /* Default.png in Resources */,
 				FBF27BC41D9172CC0020F65F /* pokers_d08.png in Resources */,
@@ -2483,12 +2556,14 @@
 				FBF27BB71D9172CC0020F65F /* pokers_c08.png in Resources */,
 				FBF27BD91D9172CC0020F65F /* pokers_s03.png in Resources */,
 				FBF27BC61D9172CC0020F65F /* pokers_d10.png in Resources */,
+				6FC09C7A1D9C0FD200A5D468 /* impact64.fnt in Resources */,
 				5AA34E3B1D92D1E200AEA363 /* teto.png in Resources */,
 				FBF27BB51D9172CC0020F65F /* pokers_c06.png in Resources */,
 				5A7624F91D907ABE00D9CB29 /* scrollBG.png in Resources */,
 				D4EF949A15BD2D8B00D803EB /* Icon-57.png in Resources */,
 				FBF27BE21D9172CC0020F65F /* pokers_s12.png in Resources */,
 				5A7624F61D90560800D9CB29 /* but_drag_1.png in Resources */,
+				6FC09C7D1D9C0FD200A5D468 /* set.png in Resources */,
 				FBF27BB31D9172CC0020F65F /* pokers_c04.png in Resources */,
 				FBF27BD21D9172CC0020F65F /* pokers_h09.png in Resources */,
 				5A7624F31D90560800D9CB29 /* btn_options_off.png in Resources */,
@@ -2542,6 +2617,7 @@
 				1AFAF8BE16D35E4900DB1158 /* HelloWorld.png in Resources */,
 				FBF27BC51D9172CC0020F65F /* pokers_d09.png in Resources */,
 				FBF27BD11D9172CC0020F65F /* pokers_h08.png in Resources */,
+				6FC09C7C1D9C0FD200A5D468 /* num_score_board_score_w.png in Resources */,
 				5A2D98FF1D9303CF0034DEDB /* meiko.plist in Resources */,
 				FBF27BD01D9172CC0020F65F /* pokers_h07.png in Resources */,
 			);
@@ -2644,6 +2720,7 @@
 				15C0B560196D412F007F909D /* CCSkin.cpp in Sources */,
 				15A3D9A11682F7F9002FB0C5 /* cpSlideJoint.c in Sources */,
 				15A3D9A21682F7F9002FB0C5 /* cpArbiter.c in Sources */,
+				FB5B20E91D9D08F700F74FA8 /* OpenGLColckScene.cpp in Sources */,
 				15A3D9A31682F7F9002FB0C5 /* cpArray.c in Sources */,
 				15A3D9A41682F7F9002FB0C5 /* cpBB.c in Sources */,
 				15C0B590196D412F007F909D /* ScrollViewReader.cpp in Sources */,
@@ -2704,6 +2781,7 @@
 				15C0B56D196D412F007F909D /* CCInputDelegate.cpp in Sources */,
 				15A3DA461682F826002FB0C5 /* CCScale9SpriteLoader.cpp in Sources */,
 				FB72B8591D912BAF004B06A0 /* PokerActor.cpp in Sources */,
+				6F1ED8021D9C076100BF64F4 /* NumberManager.cpp in Sources */,
 				15A3DA471682F826002FB0C5 /* CCScrollViewLoader.cpp in Sources */,
 				15A3DA481682F826002FB0C5 /* CCSpriteLoader.cpp in Sources */,
 				15C0B578196D412F007F909D /* UIButton.cpp in Sources */,
@@ -2764,6 +2842,8 @@
 				1A8F3B6F175E05DA00049216 /* AnimationState.cpp in Sources */,
 				15C0B58C196D412F007F909D /* LayoutReader.cpp in Sources */,
 				1A8F3B70175E05DA00049216 /* AnimationStateData.cpp in Sources */,
+				6FC09C721D9C0D6400A5D468 /* JPNumberManager.cpp in Sources */,
+				6F3B5E461D9BD579007C441C /* NumbersScene.cpp in Sources */,
 				1A8F3B71175E05DA00049216 /* Atlas.cpp in Sources */,
 				1A8F3B72175E05DA00049216 /* AtlasAttachmentLoader.cpp in Sources */,
 				1A8F3B73175E05DA00049216 /* Attachment.cpp in Sources */,

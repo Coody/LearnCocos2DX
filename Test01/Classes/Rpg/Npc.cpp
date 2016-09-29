@@ -47,6 +47,8 @@ bool Npc::init( const char *cacheImageName , const char *cachePlistName ){
 
 
 void Npc::goToPoint( cocos2d::CCPoint tempPoint ){
+  
+    
     
     if ( m_bIsArriveTarget == true ) {
         m_bIsArriveTarget = false;
@@ -58,27 +60,58 @@ void Npc::goToPoint( cocos2d::CCPoint tempPoint ){
         CCLOG( " move(%.0f , %.0f) = \n random(%.0f , %.0f) - original(%.0f , %.0f)" , movePoint.x , movePoint.y , tempPoint.x , tempPoint.y , this->getPositionX() , this->getPositionY() );
 #endif
         
-        if( movePoint.y > 0 ){
-            this->goUp();
-        }
-        else if( movePoint.y < 0 ){
-            this->goDown();
-        }
-        else if ( movePoint.x > 0 ) {
-            this->goRight();
-        }
-        else if( movePoint.x < 0 ){
-            this->goLeft();
+        unsigned int randomNumber = arc4random()%2;
+        
+        if ( randomNumber == 0 ) {
+            // 先上下後左右
+            if( movePoint.y > 0 ){
+                this->goUp();
+            }
+            else if( movePoint.y < 0 ){
+                this->goDown();
+            }
+            else if ( movePoint.x > 0 ) {
+                this->goRight();
+            }
+            else if( movePoint.x < 0 ){
+                this->goLeft();
+            }
+            else{
+                m_bIsArriveTarget = true;
+            }
         }
         else{
-            m_bIsArriveTarget = true;
+            // 先左右後上下
+            if( movePoint.x > 0 ){
+                this->goRight();
+            }
+            else if( movePoint.x < 0 ){
+                this->goLeft();
+            }
+            else if ( movePoint.y > 0 ) {
+                this->goUp();
+            }
+            else if( movePoint.y < 0 ){
+                this->goDown();
+            }
+            else{
+                m_bIsArriveTarget = true;
+            }
         }
     }
-    
 }
 
 // 往上走
 void Npc::goUp(){
+    
+    // 加入 Animation
+    CCArray *upArray = CCArray::createWithCapacity(4);
+    for ( int i = 13 ; i <= 16 ; i++ ) {
+        CCString *frameName = CCString::createWithFormat( "%s_%04d.png" , m_sImage , i );
+        CCSpriteFrame *spriteFrame = CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName( frameName->getCString() );
+        upArray->addObject(spriteFrame);
+    }
+    CCAnimation *m_upAnimation = CCAnimation::createWithSpriteFrames(upArray , D_Animation_DelayTime);
     
     float tempUpDistance = ( movePoint.y >= 0 ? movePoint.y : movePoint.y*-1 );
     
@@ -103,6 +136,15 @@ void Npc::goUp(){
 // 往下走
 void Npc::goDown(){
     
+    // 產生 downAnimation
+    CCArray *downArray = CCArray::createWithCapacity(4);
+    for ( int i = 1 ; i <= 4 ; i++ ) {
+        CCString *frameName = CCString::createWithFormat( "%s_%04d.png" , m_sImage , i );
+        CCSpriteFrame *spriteFrame = CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName( frameName->getCString() );
+        downArray->addObject(spriteFrame);
+    }
+    CCAnimation *m_downAnimation = CCAnimation::createWithSpriteFrames(downArray , D_Animation_DelayTime);
+    
     float tempDownDistance = ( movePoint.y >= 0 ? movePoint.y : movePoint.y*-1 );
     
     // 計算動畫時間
@@ -126,6 +168,17 @@ void Npc::goDown(){
 
 // 往左走
 void Npc::goLeft(){
+    
+    // 加入 Animation
+    CCArray *leftArray = CCArray::createWithCapacity(4);
+    for ( int i = 5 ; i <= 8 ; i++ ) {
+        CCString *frameName = CCString::createWithFormat( "%s_%04d.png" , m_sImage , i );
+        CCSpriteFrame *spriteFrame = CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName( frameName->getCString() );
+        leftArray->addObject(spriteFrame);
+    }
+    CCAnimation *m_leftAnimation = CCAnimation::createWithSpriteFrames(leftArray , D_Animation_DelayTime);
+    m_leftAnimation->retain();
+    
     float tempLeftDistance = ( movePoint.x >= 0 ? movePoint.x : movePoint.x*-1 );
     
     // 計算動畫時間
@@ -148,6 +201,17 @@ void Npc::goLeft(){
 
 // 往右走
 void Npc::goRight(){
+    
+    // 加入 Animation
+    CCArray *rightArray = CCArray::createWithCapacity(4);
+    for ( int i = 9 ; i <= 12 ; i++ ) {
+        CCString *frameName = CCString::createWithFormat( "%s_%04d.png" , m_sImage , i );
+        CCSpriteFrame *spriteFrame = CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName( frameName->getCString() );
+        rightArray->addObject(spriteFrame);
+    }
+    CCAnimation *m_rightAnimation = CCAnimation::createWithSpriteFrames(rightArray , D_Animation_DelayTime);
+    m_rightAnimation->retain();
+    
     float tempRightDistance = ( movePoint.x >= 0 ? movePoint.x : movePoint.x*-1 );
     
     // 計算動畫時間
@@ -180,6 +244,7 @@ void Npc::stopAnimation(){
     CCSprite *animationSprite = (CCSprite *)this->getChildByTag( EnumNPCTag_AnimationSprite );
     animationSprite->stopAllActions();
     
+    // 確認是否要繼續往其他方向走
     if ( movePoint.x != 0 ) {
         if ( movePoint.x > 0 ) {
             this->goRight();
@@ -204,7 +269,10 @@ void Npc::stopAnimation(){
 
 #pragma mark - Private
 void Npc::setNpcImageCacheName( const char *cachePlistName , const char *cacheImageName ){
+    
     // 記住名稱等等要用到
+    m_sPlist = cachePlistName;
+    m_sImage = cacheImageName;
     m_sPlistString = CCString::createWithFormat( "%s.plist" , cachePlistName );
     m_sImageString = CCString::createWithFormat( "%s.png" , cacheImageName );
     
@@ -212,52 +280,6 @@ void Npc::setNpcImageCacheName( const char *cachePlistName , const char *cacheIm
     cache->addSpriteFramesWithFile( m_sPlistString->getCString() , m_sImageString->getCString() );
     
     // 順序為：下、左、右、上
-    
-    int i = 1;
-    
-    // 下
-    CCArray *downArray = CCArray::createWithCapacity(4);
-    for ( ; i <= 4 ; i++ ) {
-        CCString *frameName = CCString::createWithFormat( "%s_%04d.png" , cacheImageName , i );
-        CCLOG(" %s " , frameName->getCString());
-        CCSpriteFrame *spriteFrame = cache->spriteFrameByName( frameName->getCString() );
-        downArray->addObject(spriteFrame);
-    }
-    m_downAnimation = CCAnimation::createWithSpriteFrames(downArray , D_Animation_DelayTime);
-    m_downAnimation->retain();
-    
-    // 左
-    CCArray *leftArray = CCArray::createWithCapacity(4);
-    for ( ; i <= 8 ; i++ ) {
-        CCString *frameName = CCString::createWithFormat( "%s_%04d.png" , cacheImageName , i );
-        CCLOG(" %s " , frameName->getCString());
-        CCSpriteFrame *spriteFrame = cache->spriteFrameByName( frameName->getCString() );
-        leftArray->addObject(spriteFrame);
-    }
-    m_leftAnimation = CCAnimation::createWithSpriteFrames(leftArray , D_Animation_DelayTime);
-    m_leftAnimation->retain();
-    
-    // 右
-    CCArray *rightArray = CCArray::createWithCapacity(4);
-    for ( ; i <= 12 ; i++ ) {
-        CCString *frameName = CCString::createWithFormat( "%s_%04d.png" , cacheImageName , i );
-        CCLOG(" %s " , frameName->getCString());
-        CCSpriteFrame *spriteFrame = cache->spriteFrameByName( frameName->getCString() );
-        rightArray->addObject(spriteFrame);
-    }
-    m_rightAnimation = CCAnimation::createWithSpriteFrames(rightArray , D_Animation_DelayTime);
-    m_rightAnimation->retain();
-    
-    // 上
-    CCArray *upArray = CCArray::createWithCapacity(4);
-    for ( ; i <= 16 ; i++ ) {
-        CCString *frameName = CCString::createWithFormat( "%s_%04d.png" , cacheImageName , i );
-        CCLOG(" %s " , frameName->getCString());
-        CCSpriteFrame *spriteFrame = cache->spriteFrameByName( frameName->getCString() );
-        upArray->addObject(spriteFrame);
-    }
-    m_upAnimation = CCAnimation::createWithSpriteFrames(upArray , D_Animation_DelayTime);
-    m_upAnimation->retain();
     
 }
 

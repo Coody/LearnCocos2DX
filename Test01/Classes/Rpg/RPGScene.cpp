@@ -16,7 +16,8 @@
 
 USING_NS_CC;
 
-CCScene *RPGLayer::scene(){
+CCScene *RPGLayer::scene()
+{
     
     CCScene *scene = CCScene::create();
     
@@ -28,7 +29,8 @@ CCScene *RPGLayer::scene(){
     
 }
 
-bool RPGLayer::init(){
+bool RPGLayer::init()
+{
     
     if ( CCLayerColor::initWithColor(D_Layer_WhiteColor) ) {
         
@@ -56,12 +58,12 @@ bool RPGLayer::init(){
         
         return true;
     }
-    
     return false;
 }
 
 #pragma mark - Private
-void RPGLayer::createNpc(){
+void RPGLayer::createNpc()
+{
     
     unsigned int i_RandomNumber = arc4random()%8;
     const char *s_Name = this->getImageName((EnumNpcName)i_RandomNumber);
@@ -69,9 +71,6 @@ void RPGLayer::createNpc(){
     Npc *npc = Npc::create( s_Name , s_Name );
     npc->setPosition( this->getRandomPoint() );
     this->addChild(npc);
-//    if( npcArray == NULL ){
-//        npcArray = CCArray::create();
-//    }
     npcArray->addObject(npc);
     
 }

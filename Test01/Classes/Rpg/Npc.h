@@ -13,6 +13,7 @@
 
 class Npc : public cocos2d::CCNode
 {
+    
 public:
     
     // 設定 cache name ( *.png , *.plist )
@@ -32,9 +33,8 @@ public:
         }
     }
     
+    // 設定移動到 point 的位置
     void goToPoint( cocos2d::CCPoint tempPoint );
-    
-    cocos2d::CCString *npcName;
     
 private:
     
@@ -62,13 +62,10 @@ private:
     cocos2d::CCPoint movePoint;
     
     // image & plist
+    const char *m_sPlist;
+    const char *m_sImage;
     cocos2d::CCString *m_sPlistString;
     cocos2d::CCString *m_sImageString;
-    
-    cocos2d::CCAnimation *m_upAnimation;
-    cocos2d::CCAnimation *m_leftAnimation;
-    cocos2d::CCAnimation *m_rightAnimation;
-    cocos2d::CCAnimation *m_downAnimation;
     
 };
 

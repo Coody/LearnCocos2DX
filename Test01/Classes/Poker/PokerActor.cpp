@@ -14,7 +14,7 @@
 
 USING_NS_CC;
 
-typedef enum{
+typedef enum Tag_PokerActor{
     EnumPokerActorTag_BackSprite_Tag = 50,
     EnumPokerActorTag_FrontSprite_Tag = 60
 }EnumPokerActorTag;
@@ -41,7 +41,7 @@ bool PokerActor::init(){
         pokerFrontSprite->setScaleX(0.0f);
         this->addChild(pokerFrontSprite , EnumPokerActorTag_FrontSprite_Tag , EnumPokerActorTag_FrontSprite_Tag);
         
-        this->setContentSize( CCSizeMake(pokerBackSprite->getContentSize().width, pokerBackSprite->getContentSize().height));
+//        this->setContentSize( CCSizeMake(pokerBackSprite->getContentSize().width, pokerBackSprite->getContentSize().height));
         
         return true;
     }
@@ -64,10 +64,14 @@ void PokerActor::setPokerCardImage( const char *sBackString , const char *sFront
 
 void PokerActor::setFlowerColor( EnumPokerFlowerColor enumFlowerColor ){
     enumColor = enumFlowerColor;
+    m_uCardNumber = enumNumber + enumColor*13;
+    // TODO: 這裡應該要做到更換圖片
 }
 
 void PokerActor::setNumber(EnumPokerNumber enumPokerNumber ){
     enumNumber = enumPokerNumber;
+    m_uCardNumber = enumNumber + enumColor*13;
+    // TODO: 這裡應該要做到更換圖片
 }
 
 EnumPokerFlowerColor PokerActor::getPokerFlowerColor(){

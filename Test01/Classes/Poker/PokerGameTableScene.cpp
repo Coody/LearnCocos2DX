@@ -43,7 +43,7 @@ bool PokerGameTableLayer::init()
         CCSize visible = CCDirector::sharedDirector()->getVisibleSize();
         CCPoint point = CCDirector::sharedDirector()->getVisibleOrigin();
         
-        // 產生發排管理員
+        // 產生發牌管理員
         PokerManager *pokerManager = PokerManager::create();
         cardArray = pokerManager->getCards(5);
         cardArray->retain();

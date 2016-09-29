@@ -97,11 +97,11 @@ cocos2d::CCArray *PokerManager::getCards(unsigned int iCount)
         {
             
             CCString *cardNumberString = (CCString *)cardArray->objectAtIndex(0);
-            
             PokerActor *card = PokerActor::create();
             card->setPokerNumber(cardNumberString->uintValue());
             card->setPokerCardImage( D_PokerResource_Back , this->getCardPic(cardNumberString->uintValue()));
             newCardArray->addObject(card);
+            
 #ifdef D_Test
             onHandArray->addObject(card);
 #endif

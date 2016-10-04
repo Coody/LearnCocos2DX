@@ -21,10 +21,6 @@ public:
     
     CREATE_FUNC(OpenGLClockLayer);
     
-    
-private:
-    
-    
 };
 
 #endif /* OpenGLColckScene_hpp */

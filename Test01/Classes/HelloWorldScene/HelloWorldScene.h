@@ -12,6 +12,7 @@ public:
     // there's no 'id' in cpp, so we recommend returning the class instance pointer
     // 有一個方法，他叫做 scene() ，再 .cpp 會覆寫他
     // 用 static 有點類似類別方法（不用實體也可以使用的方法）
+    // （ sharedInstance 也是用這種方法回傳實體 ）
     static cocos2d::CCScene* scene();
     
     // a selector callback
@@ -19,6 +20,7 @@ public:
     
     // implement the "static node()" method manually
     CREATE_FUNC(HelloWorld);
+    
 };
 
 #endif // __HELLOWORLD_SCENE_H__

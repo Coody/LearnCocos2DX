@@ -297,6 +297,7 @@
 		FB5263841D92997400D079CE /* RPGScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FB5263821D92997400D079CE /* RPGScene.cpp */; };
 		FB5263871D92A45200D079CE /* Npc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FB5263851D92A45200D079CE /* Npc.cpp */; };
 		FB5B20E91D9D08F700F74FA8 /* OpenGLColckScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FB5B20E71D9D08F700F74FA8 /* OpenGLColckScene.cpp */; };
+		FB5F930F1D9DFBB6005AE3AF /* ClockPointTool.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FB5F930D1D9DFBB6005AE3AF /* ClockPointTool.cpp */; };
 		FB6586671D923C510067BEC3 /* pokers_w01.png in Resources */ = {isa = PBXBuildFile; fileRef = FB6586661D923C510067BEC3 /* pokers_w01.png */; };
 		FB6C0B351D89513C003EAB04 /* s1.plist in Resources */ = {isa = PBXBuildFile; fileRef = FB6C0B331D89513C003EAB04 /* s1.plist */; };
 		FB6C0B361D89513C003EAB04 /* s1.png in Resources */ = {isa = PBXBuildFile; fileRef = FB6C0B341D89513C003EAB04 /* s1.png */; };
@@ -305,6 +306,7 @@
 		FB72B8591D912BAF004B06A0 /* PokerActor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FB72B84D1D912BAF004B06A0 /* PokerActor.cpp */; };
 		FB72B85B1D912BAF004B06A0 /* ScrollBarScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FB72B8521D912BAF004B06A0 /* ScrollBarScene.cpp */; };
 		FB72B85C1D912BAF004B06A0 /* TreeScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FB72B8551D912BAF004B06A0 /* TreeScene.cpp */; };
+		FBA15D2A1D9D1AA800273EBF /* XSGClock.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FBA15D281D9D1AA800273EBF /* XSGClock.cpp */; };
 		FBF27B761D916CBE0020F65F /* PokerGameTableScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FBF27B741D916CBE0020F65F /* PokerGameTableScene.cpp */; };
 		FBF27BAF1D9172CC0020F65F /* pokers_back.png in Resources */ = {isa = PBXBuildFile; fileRef = FBF27B781D9172CC0020F65F /* pokers_back.png */; };
 		FBF27BB01D9172CC0020F65F /* pokers_c01.png in Resources */ = {isa = PBXBuildFile; fileRef = FBF27B791D9172CC0020F65F /* pokers_c01.png */; };
@@ -941,6 +943,8 @@
 		FB5263861D92A45200D079CE /* Npc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Npc.h; sourceTree = "<group>"; };
 		FB5B20E71D9D08F700F74FA8 /* OpenGLColckScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OpenGLColckScene.cpp; sourceTree = "<group>"; };
 		FB5B20E81D9D08F700F74FA8 /* OpenGLColckScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpenGLColckScene.h; sourceTree = "<group>"; };
+		FB5F930D1D9DFBB6005AE3AF /* ClockPointTool.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ClockPointTool.cpp; sourceTree = "<group>"; };
+		FB5F930E1D9DFBB6005AE3AF /* ClockPointTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClockPointTool.h; sourceTree = "<group>"; };
 		FB6586661D923C510067BEC3 /* pokers_w01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pokers_w01.png; sourceTree = "<group>"; };
 		FB6C0B331D89513C003EAB04 /* s1.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = s1.plist; sourceTree = "<group>"; };
 		FB6C0B341D89513C003EAB04 /* s1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = s1.png; sourceTree = "<group>"; };
@@ -957,6 +961,8 @@
 		FB72B8561D912BAF004B06A0 /* TreeScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TreeScene.h; sourceTree = "<group>"; };
 		FB72B85D1D912BFE004B06A0 /* PokerDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PokerDefine.h; sourceTree = "<group>"; };
 		FB72B8601D91450B004B06A0 /* PokerResource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PokerResource.h; sourceTree = "<group>"; };
+		FBA15D281D9D1AA800273EBF /* XSGClock.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = XSGClock.cpp; sourceTree = "<group>"; };
+		FBA15D291D9D1AA800273EBF /* XSGClock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XSGClock.h; sourceTree = "<group>"; };
 		FBF27B741D916CBE0020F65F /* PokerGameTableScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PokerGameTableScene.cpp; sourceTree = "<group>"; };
 		FBF27B751D916CBE0020F65F /* PokerGameTableScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PokerGameTableScene.h; sourceTree = "<group>"; };
 		FBF27B781D9172CC0020F65F /* pokers_back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pokers_back.png; sourceTree = "<group>"; };
@@ -1533,7 +1539,6 @@
 		15AA9C4015B7EC450033D6C2 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				FB5B20E61D9CF9FE00F74FA8 /* OpenGLClock */,
 				FB72B8441D912B17004B06A0 /* AppDefine */,
 				FB72B8461D912BAF004B06A0 /* HelloWorldScene */,
 				FB72B8541D912BAF004B06A0 /* TreeAnimationScene */,
@@ -1542,6 +1547,7 @@
 				FB72B84C1D912BAF004B06A0 /* Poker */,
 				FB5263811D92994100D079CE /* Rpg */,
 				6F3B5E371D9BD579007C441C /* LabelScene */,
+				FB5B20E61D9CF9FE00F74FA8 /* OpenGLClock */,
 				1AFAF8B416D35DE700DB1158 /* AppDelegate.h */,
 				1AFAF8B316D35DE700DB1158 /* AppDelegate.cpp */,
 			);
@@ -2320,6 +2326,10 @@
 		FB5B20E61D9CF9FE00F74FA8 /* OpenGLClock */ = {
 			isa = PBXGroup;
 			children = (
+				FB5F930E1D9DFBB6005AE3AF /* ClockPointTool.h */,
+				FB5F930D1D9DFBB6005AE3AF /* ClockPointTool.cpp */,
+				FBA15D291D9D1AA800273EBF /* XSGClock.h */,
+				FBA15D281D9D1AA800273EBF /* XSGClock.cpp */,
 				FB5B20E81D9D08F700F74FA8 /* OpenGLColckScene.h */,
 				FB5B20E71D9D08F700F74FA8 /* OpenGLColckScene.cpp */,
 			);
@@ -2649,6 +2659,7 @@
 				15A3D90A1682F7D5002FB0C5 /* b2PolygonShape.cpp in Sources */,
 				15A3D90B1682F7D5002FB0C5 /* b2BlockAllocator.cpp in Sources */,
 				15A3D90C1682F7D5002FB0C5 /* b2Draw.cpp in Sources */,
+				FB5F930F1D9DFBB6005AE3AF /* ClockPointTool.cpp in Sources */,
 				15C0B54B196D412F007F909D /* CCActionEaseEx.cpp in Sources */,
 				15A3D90D1682F7D5002FB0C5 /* b2Math.cpp in Sources */,
 				15A3D90E1682F7D5002FB0C5 /* b2Settings.cpp in Sources */,
@@ -2801,6 +2812,7 @@
 				15A3DA501682F826002FB0C5 /* CCControlStepper.cpp in Sources */,
 				15C0B550196D412F007F909D /* CCActionObject.cpp in Sources */,
 				15A3DA511682F826002FB0C5 /* CCControlSwitch.cpp in Sources */,
+				FBA15D2A1D9D1AA800273EBF /* XSGClock.cpp in Sources */,
 				15A3DA521682F826002FB0C5 /* CCControlUtils.cpp in Sources */,
 				15A3DA531682F826002FB0C5 /* CCInvocation.cpp in Sources */,
 				15C0B54C196D412F007F909D /* CCActionFrame.cpp in Sources */,

@@ -5,7 +5,8 @@
 //#include "ScrollBarScene.h"
 //#include "PokerGameTableScene.h"
 //#include "RPGScene.h"
-#include "NumbersScene.h"
+//#include "NumbersScene.h"
+#include "OpenGLColckScene.h"
 
 USING_NS_CC;
 
@@ -39,7 +40,8 @@ bool AppDelegate::applicationDidFinishLaunching() {
 //    CCScene *pScene = ScrollBarLayer::scene();
 //    CCScene *pScene = PokerGameTableLayer::scene();
 //    CCScene *pScene = RPGLayer::scene();
-    CCScene *pScene = NumbersLayer::scene();
+//    CCScene *pScene = NumbersLayer::scene();
+    CCScene *pScene = OpenGLClockLayer::scene();
 
     // run
     pDirector->runWithScene(pScene);

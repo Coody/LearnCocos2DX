@@ -324,7 +324,7 @@ void GameBoardLayer::playReadyAnimation(){
     // ready
     CCLabelTTF *readyTTF = CCLabelTTF::create(" Ready", D_BlockGame_FontName2 , 160);
     readyTTF->setColor(ccRED);
-    readyTTF->setPosition( ccp(visibleSize.width*0.5, visibleSize.height*0.5) );
+    readyTTF->setPosition( ccp(visibleSize.width*0.5, visibleSize.height*0.44) );
     readyTTF->setScale(0.7f);
     readyTTF->setOpacity(0.0f);
     this->addChild(readyTTF , EnumGameBoardSceneTag_Ready , EnumGameBoardSceneTag_Ready);
@@ -354,7 +354,7 @@ void GameBoardLayer::playGoAnimation(){
     // go
     CCLabelTTF *goTTF = CCLabelTTF::create( " Go!", D_BlockGame_FontName2 , 200 );
     goTTF->setColor(ccRED);
-    goTTF->setPosition( ccp(visibleSize.width*0.5, visibleSize.height*0.5) );
+    goTTF->setPosition( ccp(visibleSize.width*0.5, visibleSize.height*0.44) );
     goTTF->setScale(0.7f);
     goTTF->setOpacity(0.0f);
     this->addChild( goTTF , EnumGameBoardSceneTag_Go , EnumGameBoardSceneTag_Go );

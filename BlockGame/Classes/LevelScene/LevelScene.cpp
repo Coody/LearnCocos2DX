@@ -203,6 +203,9 @@ void LevelLayer::hideMenuButtonAnimation(){
 }
 
 void LevelLayer::selectLevelEasy(){
+    
+    this->setMenuTouchDisable();
+    
     m_enumLevel = EnumGameBoard_Level_Easy;
     
     // all Action
@@ -215,6 +218,9 @@ void LevelLayer::selectLevelEasy(){
 }
 
 void LevelLayer::selectLevelNormal(){
+    
+    this->setMenuTouchDisable();
+    
     m_enumLevel = EnumGameBoard_Level_Normal;
     
     // all Action
@@ -227,6 +233,9 @@ void LevelLayer::selectLevelNormal(){
 }
 
 void LevelLayer::selectLevelHard(){
+    
+    this->setMenuTouchDisable();
+    
     m_enumLevel = EnumGameBoard_Level_Hard;
     
     // all Action
@@ -244,6 +253,11 @@ void LevelLayer::changeScene(){
 }
 
 void LevelLayer::setMenuTouchDisable(){
-    
+    CCMenu *menu1 = (CCMenu *)this->getChildByTag(EnumLevelSceneTag_MenuButton_Easy);
+    menu1->setTouchEnabled( false );
+    CCMenu *menu2 = (CCMenu *)this->getChildByTag(EnumLevelSceneTag_MenuButton_Normal);
+    menu2->setTouchEnabled( false );
+    CCMenu *menu3 = (CCMenu *)this->getChildByTag(EnumLevelSceneTag_MenuButton_Hard);
+    menu3->setTouchEnabled( false );
 }
 

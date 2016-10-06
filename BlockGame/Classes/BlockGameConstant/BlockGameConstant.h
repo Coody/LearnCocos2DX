@@ -9,7 +9,7 @@
 #ifndef BlockGameConstant_h
 #define BlockGameConstant_h
 
-#define D_Dev_Ver
+//#define D_Dev_Ver
 
 #define D_BlockGame_ActionSpeed (1.0f)
 #define D_BlockGame_BlockMoveSpeed (1.0f)
@@ -26,6 +26,7 @@
 #define D_BlockGame_GameBoardHeight (9)
 #define D_BlockGame_GameBoardMax (D_BlockGame_GameBoardWidth*D_BlockGame_GameBoardHeight)
 #define D_BlockGame_TimeMax (999)
+#define D_BlockGame_Timemin (0)
 
 #define D_BlockGame_SkillMax (15)
 #define D_BlockGame_Skillmin (0)

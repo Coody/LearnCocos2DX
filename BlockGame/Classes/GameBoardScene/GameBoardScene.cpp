@@ -476,7 +476,7 @@ void GameBoardLayer::ccTouchesEnded( cocos2d::CCSet *pTouches , cocos2d::CCEvent
             if ( m_uiRecentTargetNumber == block->getBlockNumber() ) {
                 // 正確按到
 #ifdef D_Dev_Ver
-                CCLOG(" (O) 按到 %d !! （正確）" , m_uiRecentTargetNumber);
+                CCLOG("（正確）按到 %d !! " , m_uiRecentTargetNumber);
 #endif
                 // 消除 block
                 block->disappearBlock( true , this , callfuncN_selector(GameBoardLayer::removeTouchBlock));
@@ -486,7 +486,7 @@ void GameBoardLayer::ccTouchesEnded( cocos2d::CCSet *pTouches , cocos2d::CCEvent
             else{
                 // 錯誤！
 #ifdef D_Dev_Ver
-                CCLOG(" (X) 按到 %d !! （錯誤）" , block->getBlockNumber());
+                CCLOG("（錯誤）按到 %d !! " , block->getBlockNumber());
 #endif
                 // 懲罰
             }
@@ -526,19 +526,21 @@ void GameBoardLayer::removeTouchBlock( CCObject *object ){
 }
 
 void GameBoardLayer::remindPlayer(){
-    
     // FIXIT: 這裡只是寫測試案例而已，請修正
-    BasicBlock *block = (BasicBlock *)m_arrBlockArray->objectAtIndex(0);
-    block->setZOrder(EnumGameBoardSceneTag_BlockTop);
-    block->remindPlayer();
+    if ( m_arrBlockArray->count() >= 1 ) {
+        BasicBlock *block = (BasicBlock *)m_arrBlockArray->objectAtIndex(0);
+        block->setZOrder(EnumGameBoardSceneTag_BlockTop);
+        block->remindPlayer();
+    }
 }
 
 void GameBoardLayer::stopRemondPlayer(){
-    
     // FIXIT: 這裡只是寫測試案例而已，請修正
-    BasicBlock *block = (BasicBlock *)m_arrBlockArray->objectAtIndex(0);
-    block->setZOrder(EnumGameBoardSceneTag_Block);
-    block->stopRemindPlayer();
+    if ( m_arrBlockArray->count() >= 1 ) {
+        BasicBlock *block = (BasicBlock *)m_arrBlockArray->objectAtIndex(0);
+        block->setZOrder(EnumGameBoardSceneTag_Block);
+        block->stopRemindPlayer();
+    }
 }
 
 

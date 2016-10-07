@@ -11,6 +11,8 @@
 
 #include "cocos2d.h"
 
+#define D_ClockTools_BasicTick (1)
+
 typedef enum{
     EnumClockToolsTag_TimeLabel = 10
 }EnumClockToolsTag;
@@ -20,12 +22,19 @@ public:
     virtual bool init();
     CREATE_FUNC(ClockTools);
     
-    void setStartTime( unsigned int time );
+    void setNumberColor( const cocos2d::ccColor3B& color );
+    void setNumberLayerAlpha( float alphaValue );
+    void setStartTimeAndTick( float basicTick);
+    void setStartTimeAndTick( float basicTick , unsigned int time );
+    void setMaxTime( unsigned int maxTime );
     void startCount();
     void stopCount();
     
 private:
-    
+    void calculate();
+    float m_fBasicTick;
+    float m_fTotalTime;
+    unsigned int m_uiMaxTime;
 };
 
 #endif /* ClockTools_h */

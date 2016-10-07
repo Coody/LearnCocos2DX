@@ -8,7 +8,9 @@
 
 #include "GameBoardScene.h"
 
+// for Tools
 #include "BlockMoveManager.h"
+#include "ClockTools.h"
 
 USING_NS_CC;
 
@@ -19,24 +21,12 @@ bool GameBoardLayer::init(EnumGameBoard_Level level){
         
         m_bCanTouch = false;
         m_enumRecentLevel = level;
-        m_uiRecentTargetNumber = 1;
+        m_uiBlockMaxNumber = 35;
         m_uiBlockMaxMoveNumber = 2;
+        m_uiRecentTargetNumber = 1;
+        m_enumGameState = EnumGameBoardState_Wait;
         
-        // 設定遊戲難度
-        this->setGameLevel( m_enumRecentLevel );
-        
-        // 產生隨機的 block
-        this->createBlocks();
-        
-        // 產生 Block Move 的 Manager
-        BlockMoveManager *blockMoveManager = BlockMoveManager::create( m_arrBlockArray );
-        this->addChild(blockMoveManager , EnumGameBoardSceneTag_BlockMoveManager , EnumGameBoardSceneTag_BlockMoveManager);
-        
-        // 畫面動畫開始
-        this->startSceneAnimation();
-        
-        // 處理移動效果
-        this->scheduleUpdate();
+        this->setGameState(EnumGameBoardState_Playing);
         
         return true;
     }
@@ -53,6 +43,55 @@ CCScene *GameBoardLayer::scene(EnumGameBoard_Level level){
     scene->addChild(layer);
     
     return scene;
+}
+
+void GameBoardLayer::setGameState( EnumGameBoardState gameState){
+    
+    if ( gameState == m_enumGameState ) {
+        return;
+    }
+    
+    m_enumGameState = gameState;
+    switch ( m_enumGameState ) {
+        case EnumGameBoardState_Wait:
+        {
+            
+        }
+            break;
+        case EnumGameBoardState_Playing:
+        {
+            // 設定遊戲難度
+            this->setGameLevel( m_enumRecentLevel );
+            
+            // 產生隨機的 block
+            this->createBlocks();
+            
+            // 產生 Block Move 的 Manager
+            BlockMoveManager *blockMoveManager = BlockMoveManager::create( m_arrBlockArray );
+            this->addChild(blockMoveManager , EnumGameBoardSceneTag_BlockMoveManager , EnumGameBoardSceneTag_BlockMoveManager);
+            
+            // 畫面動畫開始
+            this->startSceneAnimation();
+            
+            // 處理移動效果
+            this->scheduleUpdate();
+            
+        }
+            break;
+        case EnumGameBoardState_Win:
+        {
+            
+        }
+            break;
+        case EnumGameBoardState_Lose:
+        {
+            
+        }
+            break;
+        default:
+            break;
+    }
+    
 }
 
 /**
@@ -159,11 +198,18 @@ void GameBoardLayer::createBlocks(){
         m_arrBlockArray->retain();
     }
     else{
-//        for ( int i = 0 ; i < m_arrBlockArray->count() ; i++ ) {
-//            BasicBlock *block = (BasicBlock *)m_arrBlockArray->objectAtIndex(i);
-//            block->disappearBlock( true , this , GameBoardLayer::removeBlock( block->getBlockNumber) );
-//        }
-//        m_arrBlockArray->removeAllObjects();
+        for ( int i = 0 ; i < m_arrBlockArray->count() ; i++ ) {
+            BasicBlock *block = (BasicBlock *)m_arrBlockArray->objectAtIndex(i);
+            this->removeBlock(block);
+        }
+        m_arrBlockArray->removeAllObjects();
+    }
+    if( m_dicGameBoardDic == NULL ){
+        m_dicGameBoardDic = CCDictionary::create();
+        m_dicGameBoardDic->retain();
+    }
+    else{
+        m_dicGameBoardDic->removeAllObjects();
     }
     
     // 產生 6*9 = 54 (預設 54 格，可於 define 設定) 個不同位置參數，然後洗牌
@@ -184,6 +230,7 @@ void GameBoardLayer::createBlocks(){
         block->setPointWithPosition( ((CCString *)(positionArray->objectAtIndex(i-1)))->intValue() );
         block->setPosition( ccp( block->getPositionX() , visibleSize.height + 60 ) );
         m_arrBlockArray->addObject(block);
+        m_dicGameBoardDic->setObject(block, block->getBlockNumber());
     }
     
 }
@@ -215,6 +262,8 @@ void GameBoardLayer::showRecentTargetTitle(){
     
     labelTTF->runAction(easeOutAction);
     labelTTF->runAction(CCSequence::create(easeOutBigAction , funcAction , NULL ));
+    
+    this->playClockNumberAppearAnimation();
 }
 
 void GameBoardLayer::initialBlockAnimation(){
@@ -228,6 +277,7 @@ void GameBoardLayer::setTargetNumber( CCString *text ){
     }
     else{
         m_uiRecentTargetNumber = text->uintValue();
+        this->remindRecentNumber();
     }
     
     CCSprite *topBar = (CCSprite *)this->getChildByTag(EnumGameBoardSceneTag_TopBar);
@@ -259,6 +309,8 @@ void GameBoardLayer::setTargetNumber( CCString *text ){
         CCFadeIn *fadeInAction = CCFadeIn::create(0.25f);
         CCEaseOut *easeOutAction = CCEaseOut::create(fadeInAction, 0.3f);
         targetNumberTTF->runAction(CCSequence::create(delay , easeOutAction , NULL));
+        
+        
         
     }
     else{
@@ -324,7 +376,7 @@ void GameBoardLayer::playReadyAnimation(){
     // ready
     CCLabelTTF *readyTTF = CCLabelTTF::create(" Ready", D_BlockGame_FontName2 , 160);
     readyTTF->setColor(ccRED);
-    readyTTF->setPosition( ccp(visibleSize.width*0.5, visibleSize.height*0.44) );
+    readyTTF->setPosition( ccp(visibleSize.width*0.5, visibleSize.height*0.47) );
     readyTTF->setScale(0.7f);
     readyTTF->setOpacity(0.0f);
     this->addChild(readyTTF , EnumGameBoardSceneTag_Ready , EnumGameBoardSceneTag_Ready);
@@ -347,6 +399,24 @@ void GameBoardLayer::playReadyAnimation(){
     readyTTF->runAction(sequenceFadeInOutAction);
 }
 
+void GameBoardLayer::playClockNumberAppearAnimation(){
+    
+    CCSize visibleSize = CCDirector::sharedDirector()->getVisibleSize();
+    CCSprite *topBar = (CCSprite *)this->getChildByTag(EnumGameBoardSceneTag_TopBar);
+    
+    ClockTools *clockPlayTime = ClockTools::create();
+    clockPlayTime->setStartTimeAndTick(1.0, D_BlockGame_Timemin);
+    clockPlayTime->setMaxTime(D_BlockGame_TimeMax);
+    clockPlayTime->setPosition( ccp(visibleSize.width - 260 , 10) );
+    clockPlayTime->setScale(0.0f);
+    topBar->addChild(clockPlayTime , EnumGameBoardSceneTag_ClockTool_BasicClock , EnumGameBoardSceneTag_ClockTool_BasicClock);
+    
+    CCScaleTo *scaleSmall = CCScaleTo::create(1.0f, 1.0f);
+    CCEaseInOut *easeInOutAction = CCEaseInOut::create(scaleSmall , 5.0f);
+    clockPlayTime->runAction(easeInOutAction);
+    
+}
+
 void GameBoardLayer::playGoAnimation(){
     
     CCSize visibleSize = CCDirector::sharedDirector()->getVisibleSize();
@@ -354,7 +424,7 @@ void GameBoardLayer::playGoAnimation(){
     // go
     CCLabelTTF *goTTF = CCLabelTTF::create( " Go!", D_BlockGame_FontName2 , 200 );
     goTTF->setColor(ccRED);
-    goTTF->setPosition( ccp(visibleSize.width*0.5, visibleSize.height*0.44) );
+    goTTF->setPosition( ccp(visibleSize.width*0.5, visibleSize.height*0.47) );
     goTTF->setScale(0.7f);
     goTTF->setOpacity(0.0f);
     this->addChild( goTTF , EnumGameBoardSceneTag_Go , EnumGameBoardSceneTag_Go );
@@ -371,8 +441,9 @@ void GameBoardLayer::playGoAnimation(){
     // 開始移動
     CCCallFunc *funcAction = CCCallFunc::create( this , callfunc_selector(GameBoardLayer::startMoveAnimation));
     CCCallFunc *funcSetTouchAction = CCCallFunc::create(this, callfunc_selector(GameBoardLayer::setCanTouchLayer));
+    CCCallFunc *funcStartTimerAction = CCCallFunc::create(this , callfunc_selector(GameBoardLayer::startTimer));
     
-    CCSequence *sequenceGoAction = CCSequence::create( easeOutAction , delayTime , easeInAction , funcAction , funcSetTouchAction , NULL );
+    CCSequence *sequenceGoAction = CCSequence::create( easeOutAction , delayTime , easeInAction , funcAction , funcSetTouchAction , funcStartTimerAction , NULL );
     CCSequence *sequenceGoFadeInOutAction = CCSequence::create( fadeInAction , delayFadeInTime , fadeOutAction , NULL );
     
     goTTF->runAction(sequenceGoAction);
@@ -381,14 +452,16 @@ void GameBoardLayer::playGoAnimation(){
 
 void GameBoardLayer::showBlockAnimation( BasicBlock *block ){
     
-    // 設定位置
+    // 處理掉落動畫
+    
+    // 設定掉落前位置
     CCSize visibleSize = CCDirector::sharedDirector()->getVisibleSize();
     
     CCPoint blockPoint = this->getPointWithPosition( block->getBlockPoint() );
     block->setPosition( ccp(blockPoint.x, visibleSize.height + 50 ) );
 
     CCMoveTo *moveToAction = CCMoveTo::create(0.3f, blockPoint);
-    CCEaseOut *easeOutAction = CCEaseOut::create(moveToAction, 5.0f);
+    CCEaseOut *easeOutAction = CCEaseOut::create(moveToAction, 2.0f);
     
     block->runAction(easeOutAction);
     
@@ -399,7 +472,7 @@ void GameBoardLayer::startMoveAnimation(){
 }
 
 void GameBoardLayer::stopMoveAnimation(){
-    this->unscheduleUpdate();
+    this->unschedule(schedule_selector(GameBoardLayer::moveRandomBlocks));
 }
 
 void GameBoardLayer::moveRandomBlocks(){
@@ -444,6 +517,18 @@ void GameBoardLayer::moveRandomBlocks(){
     }
 }
 
+void GameBoardLayer::startTimer(){
+    CCSprite *topBar = (CCSprite *)this->getChildByTag(EnumGameBoardSceneTag_TopBar);
+    ClockTools *clock = (ClockTools *)topBar->getChildByTag(EnumGameBoardSceneTag_ClockTool_BasicClock);
+    clock->startCount();
+}
+
+void GameBoardLayer::stopTimer(){
+    CCSprite *topBar = (CCSprite *)this->getChildByTag(EnumGameBoardSceneTag_TopBar);
+    ClockTools *clock = (ClockTools *)topBar->getChildByTag(EnumGameBoardSceneTag_ClockTool_BasicClock);
+    clock->stopCount();
+}
+
 void GameBoardLayer::releaseData(){
     
     m_arrBlockArray->removeAllObjects();
@@ -454,6 +539,7 @@ void GameBoardLayer::releaseData(){
 
 void GameBoardLayer::setCanTouchLayer(bool canTouch){
     this->setTouchEnabled( !m_bCanTouch );
+    
 }
 
 // Touch 事件
@@ -479,9 +565,8 @@ void GameBoardLayer::ccTouchesEnded( cocos2d::CCSet *pTouches , cocos2d::CCEvent
                 CCLOG("（正確）按到 %d !! " , m_uiRecentTargetNumber);
 #endif
                 // 消除 block
-                block->disappearBlock( true , this , callfuncN_selector(GameBoardLayer::removeTouchBlock));
                 this->setTargetNumber( CCString::createWithFormat("%d" , m_uiRecentTargetNumber+1) );
-                
+                block->disappearBlock( true , this , callfuncN_selector(GameBoardLayer::removeTouchBlock));
             }
             else{
                 // 錯誤！
@@ -507,6 +592,7 @@ void GameBoardLayer::addNewBlock(){
 
 void GameBoardLayer::removeBlock( BasicBlock *removeBlock ){
     m_arrBlockArray->removeObject( removeBlock );
+    m_dicGameBoardDic->removeObjectForKey(removeBlock->getBlockNumber());
     BlockMoveManager *blockMoveManager = (BlockMoveManager *)this->getChildByTag(EnumGameBoardSceneTag_BlockMoveManager);
     blockMoveManager->removeBlock(removeBlock);
 }
@@ -517,32 +603,60 @@ void GameBoardLayer::removeTouchBlock( CCObject *object ){
     this->removeBlock((BasicBlock *)object);
     
     // 確認是否結束遊戲？
-    if ( m_uiBlockMaxNumber > m_uiBlockMaxMoveNumber ) {
+    if ( m_arrBlockArray->count() <= 0 ) {
         // 結束遊戲
+        this->stopTimer();
+        
+        this->setGameState(EnumGameBoardState_Win);
     }
     else if( 0 ){
-        // 三次錯誤後失敗！
+        // 命用完
     }
 }
 
-void GameBoardLayer::remindPlayer(){
-    // FIXIT: 這裡只是寫測試案例而已，請修正
-    if ( m_arrBlockArray->count() >= 1 ) {
-        BasicBlock *block = (BasicBlock *)m_arrBlockArray->objectAtIndex(0);
+void GameBoardLayer::remindRecentNumber(){
+    BasicBlock *block = (BasicBlock *)m_dicGameBoardDic->objectForKey(m_uiRecentTargetNumber);
+    if ( block ) {
         block->setZOrder(EnumGameBoardSceneTag_BlockTop);
         block->remindPlayer();
     }
 }
 
-void GameBoardLayer::stopRemondPlayer(){
-    // FIXIT: 這裡只是寫測試案例而已，請修正
-    if ( m_arrBlockArray->count() >= 1 ) {
-        BasicBlock *block = (BasicBlock *)m_arrBlockArray->objectAtIndex(0);
+void GameBoardLayer::remindTargets( cocos2d::CCArray *targetNumbers ){
+    for (int i = 0 ; i < targetNumbers->count() ; i++ ) {
+        int blockNumber = ((CCString *)targetNumbers->objectAtIndex(i))->intValue();
+        BasicBlock *block = (BasicBlock *)m_dicGameBoardDic->objectForKey(blockNumber);
+        if ( block != NULL ) {
+            if ( block->checkIsRemind() ) {
+                
+            }
+            else{
+                block->setZOrder(EnumGameBoardSceneTag_BlockTop);
+                block->remindPlayer();
+            }
+        }
+    }
+}
+
+void GameBoardLayer::stopRemindRecentNumber(){
+    BasicBlock *block = (BasicBlock *)m_dicGameBoardDic->objectForKey(m_uiRecentTargetNumber);
+    if ( block ) {
         block->setZOrder(EnumGameBoardSceneTag_Block);
         block->stopRemindPlayer();
     }
 }
 
-
+void GameBoardLayer::stopRemindTargets(cocos2d::CCArray *targetNumbers){
+    for (int i = 0 ; i < targetNumbers->count() ; i++ ) {
+        int blockNumber = ((CCString *)targetNumbers->objectAtIndex(i))->intValue();
+        BasicBlock *block = (BasicBlock *)m_dicGameBoardDic->objectForKey(blockNumber);
+        if ( block != NULL ){
+            if ( block->checkIsRemind() ) {
+                block->setZOrder(EnumGameBoardSceneTag_Block);
+                block->stopRemindPlayer();
+            }
+        }
+    }
+}
 
 

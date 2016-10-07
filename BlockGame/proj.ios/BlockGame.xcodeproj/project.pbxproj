@@ -276,6 +276,9 @@
 		FB24DF8D1D9E3A9F008B3421 /* blockButtonSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = FB24DF8B1D9E3A9F008B3421 /* blockButtonSelected.png */; };
 		FB24DF911D9E3CB9008B3421 /* LevelScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FB24DF8F1D9E3CB9008B3421 /* LevelScene.cpp */; };
 		FB767B161DA5ED9B001AFD5D /* ClockTools.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FB767B141DA5ED9B001AFD5D /* ClockTools.cpp */; };
+		FB954D101DA652C3009E693A /* PlayerManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FB954D0E1DA652C3009E693A /* PlayerManager.cpp */; };
+		FB954D131DA652E1009E693A /* BlockManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FB954D111DA652E1009E693A /* BlockManager.cpp */; };
+		FBE545A81DA7B11F00A4A06E /* EndGameScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FBE545A61DA7B11F00A4A06E /* EndGameScene.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -839,6 +842,12 @@
 		FB24DF901D9E3CB9008B3421 /* LevelScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LevelScene.h; sourceTree = "<group>"; };
 		FB767B141DA5ED9B001AFD5D /* ClockTools.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ClockTools.cpp; sourceTree = "<group>"; };
 		FB767B151DA5ED9B001AFD5D /* ClockTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClockTools.h; sourceTree = "<group>"; };
+		FB954D0E1DA652C3009E693A /* PlayerManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PlayerManager.cpp; sourceTree = "<group>"; };
+		FB954D0F1DA652C3009E693A /* PlayerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerManager.h; sourceTree = "<group>"; };
+		FB954D111DA652E1009E693A /* BlockManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BlockManager.cpp; sourceTree = "<group>"; };
+		FB954D121DA652E1009E693A /* BlockManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlockManager.h; sourceTree = "<group>"; };
+		FBE545A61DA7B11F00A4A06E /* EndGameScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EndGameScene.cpp; sourceTree = "<group>"; };
+		FBE545A71DA7B11F00A4A06E /* EndGameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EndGameScene.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -2035,6 +2044,8 @@
 			children = (
 				6F53A7A91DA168EF006CDE47 /* GameBoardScene.h */,
 				6F53A7A81DA168EF006CDE47 /* GameBoardScene.cpp */,
+				FBE545A71DA7B11F00A4A06E /* EndGameScene.h */,
+				FBE545A61DA7B11F00A4A06E /* EndGameScene.cpp */,
 			);
 			path = GameBoardScene;
 			sourceTree = "<group>";
@@ -2063,6 +2074,10 @@
 				FB14EBAA1DA2683A00304581 /* BlockMoveManager.cpp */,
 				FB767B151DA5ED9B001AFD5D /* ClockTools.h */,
 				FB767B141DA5ED9B001AFD5D /* ClockTools.cpp */,
+				FB954D0F1DA652C3009E693A /* PlayerManager.h */,
+				FB954D0E1DA652C3009E693A /* PlayerManager.cpp */,
+				FB954D121DA652E1009E693A /* BlockManager.h */,
+				FB954D111DA652E1009E693A /* BlockManager.cpp */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -2254,6 +2269,7 @@
 				15C0B570196D412F007F909D /* UILayoutDefine.cpp in Sources */,
 				15A3D9221682F7D5002FB0C5 /* b2GearJoint.cpp in Sources */,
 				15A3D9231682F7D5002FB0C5 /* b2Joint.cpp in Sources */,
+				FB954D101DA652C3009E693A /* PlayerManager.cpp in Sources */,
 				6F53A7AA1DA168EF006CDE47 /* GameBoardScene.cpp in Sources */,
 				15A3D9241682F7D5002FB0C5 /* b2MouseJoint.cpp in Sources */,
 				15C0B55B196D412F007F909D /* CCDatas.cpp in Sources */,
@@ -2285,6 +2301,7 @@
 				15A3D9A01682F7F9002FB0C5 /* cpSimpleMotor.c in Sources */,
 				15C0B560196D412F007F909D /* CCSkin.cpp in Sources */,
 				15A3D9A11682F7F9002FB0C5 /* cpSlideJoint.c in Sources */,
+				FB954D131DA652E1009E693A /* BlockManager.cpp in Sources */,
 				15A3D9A21682F7F9002FB0C5 /* cpArbiter.c in Sources */,
 				15A3D9A31682F7F9002FB0C5 /* cpArray.c in Sources */,
 				15A3D9A41682F7F9002FB0C5 /* cpBB.c in Sources */,
@@ -2420,6 +2437,7 @@
 				15C0B58B196D412F007F909D /* LabelReader.cpp in Sources */,
 				1A8F3B79175E05DA00049216 /* extension.cpp in Sources */,
 				15C0B597196D412F007F909D /* TriggerObj.cpp in Sources */,
+				FBE545A81DA7B11F00A4A06E /* EndGameScene.cpp in Sources */,
 				1A8F3B7A175E05DA00049216 /* Json.cpp in Sources */,
 				1A8F3B7B175E05DA00049216 /* RegionAttachment.cpp in Sources */,
 				15C0B54D196D412F007F909D /* CCActionFrameEasing.cpp in Sources */,

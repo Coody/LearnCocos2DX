@@ -31,9 +31,22 @@ typedef enum{
     EnumGameBoardSceneTag_TopBar_TargetNumber = 550,
     EnumGameBoardSceneTag_Ready = 600,
     EnumGameBoardSceneTag_Go = 610,
-    EnumGameBoardSceneTag_BlockMoveManager = 1000
+    EnumGameBoardSceneTag_BlockMoveManager = 1000,
+    EnumGameBoardSceneTag_ClockTool_BasicClock = 1010,
+    EnumGameBoardSceneTag_ClockTool_PlayerHelper = 1020
     
 }EnumGameBoardSceneTag;
+
+typedef enum{
+    EnumGameBoardSceneActionTag_RemindPlayer = 100
+}EnumGameBoardSceneActionTag;
+
+typedef enum{
+    EnumGameBoardState_Wait = 1,
+    EnumGameBoardState_Playing = 2,
+    EnumGameBoardState_Win = 3,
+    EnumGameBoardState_Lose = 4
+}EnumGameBoardState;
 
 class GameBoardLayer : public cocos2d::CCLayerColor{
 
@@ -74,9 +87,13 @@ private:
     void setTargetNumber( cocos2d::CCString *text );
     void changeTargetNumberString( CCObject *object );
     void playTargetNumberAppearAnimation();
+    void playClockNumberAppearAnimation();
     void playReadyAnimation();
     void playGoAnimation();
     void playTimeAnimation();
+    
+    // 設定遊戲狀態
+    void setGameState( EnumGameBoardState gameState);
     
     // 取得實際點位置
     cocos2d::CCPoint getPointWithPosition( unsigned int position );
@@ -86,6 +103,10 @@ private:
     void startMoveAnimation();
     void stopMoveAnimation();
     void moveRandomBlocks();
+    
+    // 時間處理
+    void startTimer();
+    void stopTimer();
     
     // free memory
     void releaseData();
@@ -100,19 +121,22 @@ private:
     void removeBlock( BasicBlock *removeBlock );
     void removeTouchBlock( CCObject *object );
     
+    // 提醒目前的 block
+    void remindRecentNumber();
+    void remindTargets( cocos2d::CCArray *targetNumbers );
+    void stopRemindRecentNumber();
+    void stopRemindTargets( cocos2d::CCArray *targetNumbers );
+    
 #pragma mark - Property
     // Properties
     bool m_bCanTouch;
     EnumGameBoard_Level m_enumRecentLevel;
+    EnumGameBoardState m_enumGameState;
     unsigned int m_uiBlockMaxNumber;
     unsigned int m_uiBlockMaxMoveNumber;
     unsigned int m_uiRecentTargetNumber;// 目前目標的 Number
     cocos2d::CCArray *m_arrBlockArray;
-    cocos2d::CCDictionary *m_dicGameBoardHashArray;
-    
-    // 提醒目前的 block
-    void remindPlayer();
-    void stopRemondPlayer();
+    cocos2d::CCDictionary *m_dicGameBoardDic;
 };
 
 #endif /* GameBoardScene_h */

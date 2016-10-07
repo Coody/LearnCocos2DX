@@ -70,6 +70,7 @@ public:
     // 提醒新手
     void remindPlayer();
     void stopRemindPlayer();
+    bool checkIsRemind();
     
     void changeBlockBGColor( float duration, GLshort deltaRed, GLshort deltaGreen, GLshort deltaBlue );
     
@@ -95,6 +96,7 @@ private:
 #pragma mark - Property
     bool m_bIsMoving;
     bool m_bCanTouch;
+    bool m_bIsRemind;
     
     EnumBasicBlockType m_enumBlockType;
     unsigned int m_iBlockNumber;

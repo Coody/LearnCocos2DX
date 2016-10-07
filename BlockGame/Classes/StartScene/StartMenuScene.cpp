@@ -128,6 +128,7 @@ void StartMenuLayer::selectedMenuButton(){
     
     // menu 按鈕動畫消失
     CCMenu *menu = (CCMenu *)this->getChildByTag(EnumStartMenuSceneTag_MenuButton);
+    menu->setEnabled(false);
     
     CCScaleBy *scaleBigAction = CCScaleBy::create(0.3f, 1.5f);
     CCEaseIn *easeBigAction = CCEaseIn::create(scaleBigAction, 0.7f);

@@ -15,6 +15,7 @@
 #define D_BlockGame_BlockMoveSpeed (1.0f)
 #define D_BlockGame_BackgroundColor cocos2d::ccc4(242, 242, 242, 255)
 #define D_BlockGame_LevelLayerColor cocos2d::ccc4(56, 174, 82, 255)
+#define D_BlockGame_BlackLayerColor cocos2d::ccc4(0, 0, 0, 255)
 #define D_BlockGame_FontName "From Cartoon Blocks"
 #define D_BlockGame_FontName2 "Luckiest Guy"
 #define D_Label_Image1 ""

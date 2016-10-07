@@ -19,6 +19,7 @@ bool BasicBlock::initWithType(EnumBasicBlockType type, unsigned int blockNumber)
     if ( CCNode::create() ) {
         
         this->setAnchorPoint(ccp(0, 0));
+        m_bIsRemind = false;
         m_bIsMoving = false;
         m_bCanTouch = true;
         m_enumBlockType = type;
@@ -170,6 +171,7 @@ bool BasicBlock::getBlockTouch(){
 }
 
 void BasicBlock::remindPlayer(){
+    m_bIsRemind = true;
     CCScaleTo *scaleBig = CCScaleTo::create( 0.5f , 1.2f);
     CCEaseOut *easeOut = CCEaseOut::create(scaleBig, 1.0f);
     CCScaleTo *scaleSmall = CCScaleTo::create( 0.5f , 0.9f);
@@ -181,7 +183,12 @@ void BasicBlock::remindPlayer(){
 }
 
 void BasicBlock::stopRemindPlayer(){
+    m_bIsRemind = false;
     this->stopActionByTag(EnumBasicBlockActionTag_RemindAction);
+}
+
+bool BasicBlock::checkIsRemind(){
+    return m_bIsRemind;
 }
 
 void changeBlockBGColor( float duration, GLshort deltaRed, GLshort deltaGreen, GLshort deltaBlue ){

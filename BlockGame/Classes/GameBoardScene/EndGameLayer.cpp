@@ -1,74 +1,117 @@
 //
-//  LevelScene.cpp
+//  EndGameLayer.cpp
 //  BlockGame
 //
-//  Created by Coody on 2016/9/30.
+//  Created by Chou Coody on 2016/10/10.
 //
 //
 
-#include "LevelScene.h"
+#include "EndGameLayer.h"
+
+// for Constant
+#include "BlockGameConstant.h"
 
 // for Scene
-#include "GameBoardScene.h"
+#include "StartMenuScene.h"
+
+// for Layer
+#include "LeaderboardLayer.h"
 
 USING_NS_CC;
 
-CCScene *LevelLayer::scene(){
+bool EndGameLayer::init(){
     
-    CCScene *scene = CCScene::create();
-    
-    LevelLayer *layer = LevelLayer::create();
-    
-    scene->addChild(layer);
-    
-    return scene;
-}
-
-bool LevelLayer::init(){
-    
-    if ( CCLayerColor::initWithColor(D_BlockGame_GreenColor) ) {
+    if ( CCLayerColor::initWithColor( D_BlockGame_GreenColor ) ) {
         
-        m_enumLevel = EnumGameBoard_Level_Easy;
+        CCSize visibleSize = CCDirector::sharedDirector()->getVisibleSize();
         
-        this->showLabelAnimation();
-        
-//        this->showMenuButtonAnimation();
+        this->setContentSize(visibleSize);
+        this->setOpacity(0.0f);
+        this->setPosition(ccp(0, -100));
         
         return true;
+        
     }
     
     return false;
 }
 
-void LevelLayer::showLabelAnimation(){
+void EndGameLayer::startInitialLayer(){
     
+    CCCallFunc *showLayerAnimation = CCCallFunc::create(this , callfunc_selector(EndGameLayer::showLayerAnimation));
     
+    CCCallFunc *showTitleAnimation = CCCallFunc::create(this, callfunc_selector(EndGameLayer::showTitleAnimation));
+    
+    CCDelayTime *delay = CCDelayTime::create(0.5f);
+    
+    CCSequence *sequenceAction = CCSequence::create( showLayerAnimation , delay , showTitleAnimation , NULL );
+    
+    this->runAction(sequenceAction);
+    
+}
+
+void EndGameLayer::setTryAgainBlock(cocos2d::CCObject *targetObj ,
+                      cocos2d::SEL_CallFuncN selDisappearDone )
+{
+    
+}
+
+void EndGameLayer::stopInitialLayer(){
+    
+    CCCallFunc *hideTitleAnimation = CCCallFunc::create(this, callfunc_selector(EndGameLayer::hideTitleAnimation));
+    
+    CCDelayTime *delay1 = CCDelayTime::create(0.4f);
+    CCDelayTime *delay2 = CCDelayTime::create(1.2f);
+    
+    CCCallFunc *hideMenuAnimation = CCCallFunc::create(this , callfunc_selector(EndGameLayer::hideMenuButtonAnimation));
+    
+    CCCallFunc *hideLayerAnimation = CCCallFunc::create(this , callfunc_selector(EndGameLayer::hideLayerAnimation));
+    
+    CCSequence *sequenceAction = CCSequence::create( hideTitleAnimation , delay1 , hideMenuAnimation , delay2 , hideLayerAnimation , NULL );
+    
+    this->runAction(sequenceAction);
+}
+
+#pragma mark - Private
+void EndGameLayer::showLayerAnimation(){
+    CCMoveBy *moveBy = CCMoveBy::create(0.3f, ccp(0, 100));
+    CCFadeIn *fadeIn = CCFadeIn::create(0.2f);
+    this->runAction(moveBy);
+    this->runAction(fadeIn);
+}
+
+void EndGameLayer::hideLayerAnimation(){
+    CCMoveBy *moveBy = CCMoveBy::create(0.5f, ccp(0, -100));
+    CCFadeOut *fadeOut = CCFadeOut::create(0.2f);
+    this->runAction(moveBy);
+    this->runAction(fadeOut);
+}
+
+void EndGameLayer::showTitleAnimation(){
     CCSize visibleSize = CCDirector::sharedDirector()->getVisibleSize();
     
     // Title
-    CCLabelTTF *labelTTF = CCLabelTTF::create( "Select Level", D_BlockGame_FontName , 110);
+    CCLabelTTF *labelTTF = CCLabelTTF::create( "Game Over!", D_BlockGame_FontName , 110);
     labelTTF->setPosition(ccp(visibleSize.width*0.5, visibleSize.height*0.9));
     labelTTF->setOpacity(0.0f);
     labelTTF->setScale(0.0f);
-    this->addChild(labelTTF , EnumLevelSceneTag_TitleLabel , EnumLevelSceneTag_TitleLabel);
+    this->addChild(labelTTF , EnumEndGameLayerTag_Title , EnumEndGameLayerTag_Title);
     
     CCDelayTime *delayTime = CCDelayTime::create(0.3f);
-
+    
     CCScaleTo *scaleBig = CCScaleTo::create(0.6f, 1.0f);
     CCEaseOut *easeOutAction = CCEaseOut::create(scaleBig, 15.0f);
     
     CCFadeIn *fadeInAction = CCFadeIn::create(0.3f);
     
-    CCCallFunc *showMenuAction = CCCallFunc::create(this , callfunc_selector(LevelLayer::showMenuButtonAnimation));
+    CCCallFunc *showMenuAction = CCCallFunc::create(this , callfunc_selector(EndGameLayer::showMenuButtonAnimation));
     
     labelTTF->runAction(CCSequence::create(delayTime , fadeInAction , NULL));
     labelTTF->runAction(CCSequence::create(delayTime , easeOutAction , showMenuAction , NULL));
-    
 }
 
-void LevelLayer::hideLabelAnimation(){
-    
-    CCLabelTTF *labelTTF = (CCLabelTTF *)this->getChildByTag(EnumLevelSceneTag_TitleLabel);
+void EndGameLayer::hideTitleAnimation(){
+    CCLabelTTF *labelTTF = (CCLabelTTF *)this->getChildByTag(EnumEndGameLayerTag_Title);
     
     CCScaleTo *scaleSmall = CCScaleTo::create(0.3f, 0.0f);
     CCEaseIn *easeInAction = CCEaseIn::create(scaleSmall, 15.0f);
@@ -77,26 +120,25 @@ void LevelLayer::hideLabelAnimation(){
     
     labelTTF->runAction(easeInAction);
     labelTTF->runAction(fadeOutAction);
-    
 }
 
-void LevelLayer::showMenuButtonAnimation(){
-    
+void EndGameLayer::initialMenu(){
     CCSize visibleSize = CCDirector::sharedDirector()->getVisibleSize();
     
     // 產生第一個按鈕
     {
-        CCLabelTTF *labelLow = CCLabelTTF::create("1 ~ 35 (Hard)", D_BlockGame_FontName , 76);
+        CCLabelTTF *labelLow = CCLabelTTF::create("Try Again", D_BlockGame_FontName , 76);
         
         CCMenuItemLabel *menuLabel = CCMenuItemLabel::create(labelLow,
                                                              this,
-                                                             menu_selector(LevelLayer::selectLevelHard));
+                                                             menu_selector(EndGameLayer::pressedTryAgain));
         menuLabel->setPosition( CCPointZero );
         CCMenu *menu = CCMenu::create(menuLabel , NULL);
+        menu->setOpacity(0.0f);
         menu->setContentSize( CCSizeMake(menuLabel->getContentSize().width , menuLabel->getContentSize().height) );
         menu->setPosition(ccp( visibleSize.width*0.9 , visibleSize.height*0.67 ));
         
-        this->addChild(menu , EnumLevelSceneTag_MenuButton_Hard , EnumLevelSceneTag_MenuButton_Hard);
+        this->addChild(menu , EnumEndGameLayerTag_TryAgain , EnumEndGameLayerTag_TryAgain);
         
         CCMoveTo *moveToAction = CCMoveTo::create(0.5f, ccp(visibleSize.width*0.5, visibleSize.height*0.67 ));
         CCEaseOut *easeAction = CCEaseOut::create(moveToAction, 1.0f);
@@ -109,18 +151,18 @@ void LevelLayer::showMenuButtonAnimation(){
     
     // 產生第二個按鈕
     {
-        CCLabelTTF *labelLow = CCLabelTTF::create("1 ~ 25  (Mid)", D_BlockGame_FontName , 76);
+        CCLabelTTF *labelLow = CCLabelTTF::create("Leaderboard", D_BlockGame_FontName , 76);
         
         CCMenuItemLabel *menuLabel = CCMenuItemLabel::create(labelLow,
                                                              this,
-                                                             menu_selector(LevelLayer::selectLevelNormal));
+                                                             menu_selector(EndGameLayer::pressedLeaderboard));
         menuLabel->setPosition( CCPointZero );
         CCMenu *menu = CCMenu::create(menuLabel , NULL);
         menu->setOpacity(0.0f);
         menu->setContentSize( CCSizeMake(menuLabel->getContentSize().width , menuLabel->getContentSize().height) );
         menu->setPosition(ccp( visibleSize.width *0.9, visibleSize.height*0.47 ));
         
-        this->addChild(menu , EnumLevelSceneTag_MenuButton_Normal , EnumLevelSceneTag_MenuButton_Normal);
+        this->addChild(menu , EnumEndGameLayerTag_Leaderboard , EnumEndGameLayerTag_Leaderboard);
         
         CCMoveTo *moveToAction = CCMoveTo::create(0.5f, ccp(visibleSize.width*0.5, visibleSize.height*0.47 ));
         CCEaseOut *easeAction = CCEaseOut::create(moveToAction, 1.0f);
@@ -131,22 +173,22 @@ void LevelLayer::showMenuButtonAnimation(){
         menu->runAction(CCSequence::create( delay , easeAction , NULL ));
         menu->runAction(CCSequence::create( delay , fadeInAction , NULL ));
     }
-
+    
     
     // 產生第三個按鈕
     {
-        CCLabelTTF *labelLow = CCLabelTTF::create("1 ~ 15 (Easy)", D_BlockGame_FontName , 76);
+        CCLabelTTF *labelLow = CCLabelTTF::create("Restart", D_BlockGame_FontName , 76);
         
         CCMenuItemLabel *menuLabel = CCMenuItemLabel::create(labelLow,
                                                              this,
-                                                             menu_selector(LevelLayer::selectLevelEasy));
+                                                             menu_selector(EndGameLayer::pressedRestart));
         menuLabel->setPosition( CCPointZero );
         CCMenu *menu = CCMenu::create(menuLabel , NULL);
         menu->setOpacity(0.0f);
         menu->setContentSize( CCSizeMake(menuLabel->getContentSize().width , menuLabel->getContentSize().height) );
         menu->setPosition(ccp( visibleSize.width*0.9 , visibleSize.height*0.26 ));
         
-        this->addChild(menu , EnumLevelSceneTag_MenuButton_Easy , EnumLevelSceneTag_MenuButton_Easy);
+        this->addChild(menu , EnumEndGameLayerTag_Restart , EnumEndGameLayerTag_Restart);
         
         CCMoveTo *moveToAction = CCMoveTo::create(0.5f, ccp(visibleSize.width*0.5, visibleSize.height*0.26 ));
         CCEaseOut *easeAction = CCEaseOut::create(moveToAction, 1.0f);
@@ -157,15 +199,14 @@ void LevelLayer::showMenuButtonAnimation(){
         menu->runAction(CCSequence::create( delay , easeAction , NULL ));
         menu->runAction(CCSequence::create( delay , fadeInAction , NULL ));
     }
-    
 }
 
-void LevelLayer::hideMenuButtonAnimation(){
+void EndGameLayer::hideMenuButtonAnimation(){
     
     CCSize visibleSize = CCDirector::sharedDirector()->getVisibleSize();
     
     {
-        CCMenu *menu = (CCMenu *)this->getChildByTag(EnumLevelSceneTag_MenuButton_Easy);
+        CCMenu *menu = (CCMenu *)this->getChildByTag(EnumEndGameLayerTag_Restart);
         
         CCMoveTo *moveToAction = CCMoveTo::create(0.35f, ccp( visibleSize.width*0.9 , visibleSize.height*0.26 ));
         CCEaseIn *easeAction = CCEaseIn::create(moveToAction, 1.0f);
@@ -178,7 +219,7 @@ void LevelLayer::hideMenuButtonAnimation(){
     }
     
     {
-        CCMenu *menu = (CCMenu *)this->getChildByTag(EnumLevelSceneTag_MenuButton_Normal);
+        CCMenu *menu = (CCMenu *)this->getChildByTag(EnumEndGameLayerTag_Leaderboard);
         
         CCMoveTo *moveToAction = CCMoveTo::create(0.35f, ccp( visibleSize.width*0.9 , visibleSize.height*0.47 ));
         CCEaseIn *easeAction = CCEaseIn::create(moveToAction, 1.0f);
@@ -191,7 +232,7 @@ void LevelLayer::hideMenuButtonAnimation(){
     }
     
     {
-        CCMenu *menu = (CCMenu *)this->getChildByTag(EnumLevelSceneTag_MenuButton_Hard);
+        CCMenu *menu = (CCMenu *)this->getChildByTag(EnumEndGameLayerTag_TryAgain);
         
         CCMoveTo *moveToAction = CCMoveTo::create(0.35f, ccp( visibleSize.width*0.9 , visibleSize.height*0.67 ));
         CCEaseIn *easeAction = CCEaseIn::create(moveToAction, 1.0f);
@@ -202,62 +243,42 @@ void LevelLayer::hideMenuButtonAnimation(){
     }
 }
 
-void LevelLayer::selectLevelEasy(){
+void EndGameLayer::pressedTryAgain(){
     
-    this->setMenuTouchDisable();
-    
-    m_enumLevel = EnumGameBoard_Level_Easy;
-    
-    // all Action
-    this->hideLabelAnimation();
-    this->hideMenuButtonAnimation();
-    
-    CCDelayTime *delayChangeScene = CCDelayTime::create(1.0f);
-    CCCallFunc *changeSceneAction = CCCallFunc::create(this, callfunc_selector(LevelLayer::changeScene));
-    this->runAction(CCSequence::create(delayChangeScene , changeSceneAction , NULL));
 }
 
-void LevelLayer::selectLevelNormal(){
-    
-    this->setMenuTouchDisable();
-    
-    m_enumLevel = EnumGameBoard_Level_Normal;
-    
-    // all Action
-    this->hideLabelAnimation();
-    this->hideMenuButtonAnimation();
-    
-    CCDelayTime *delayChangeScene = CCDelayTime::create(1.0f);
-    CCCallFunc *changeSceneAction = CCCallFunc::create(this, callfunc_selector(LevelLayer::changeScene));
-    this->runAction(CCSequence::create(delayChangeScene , changeSceneAction , NULL));
+void EndGameLayer::pressedLeaderboard(){
+    LeaderboardLayer *leaderboardLayer = (LeaderboardLayer *)this->getChildByTag(EnumEndGameLayerTag_LeaderboardLayer);
+    if ( leaderboardLayer == NULL ) {
+        leaderboardLayer = LeaderboardLayer::create();
+        this->addChild(leaderboardLayer , EnumEndGameLayerTag_LeaderboardLayer , EnumEndGameLayerTag_LeaderboardLayer);
+    }
+    leaderboardLayer->startLeaderboardAnimation();
 }
 
-void LevelLayer::selectLevelHard(){
+void EndGameLayer::pressedRestart(){
     
-    this->setMenuTouchDisable();
+    CCCallFunc *hideTitleAnimation = CCCallFunc::create(this, callfunc_selector(EndGameLayer::hideTitleAnimation));
     
-    m_enumLevel = EnumGameBoard_Level_Hard;
+    CCDelayTime *delay1 = CCDelayTime::create(0.4f);
+    CCDelayTime *delay2 = CCDelayTime::create(1.2f);
     
-    // all Action
-    this->hideLabelAnimation();
-    this->hideMenuButtonAnimation();
+    CCCallFunc *hideMenuAnimation = CCCallFunc::create(this , callfunc_selector(EndGameLayer::hideMenuButtonAnimation));
     
-    CCDelayTime *delayChangeScene = CCDelayTime::create(1.0f);
-    CCCallFunc *changeSceneAction = CCCallFunc::create(this, callfunc_selector(LevelLayer::changeScene));
-    this->runAction(CCSequence::create(delayChangeScene , changeSceneAction , NULL));
+    CCCallFunc *changeScene = CCCallFunc::create(this , callfunc_selector(EndGameLayer::changeSceneToStartMScene));
+    
+    CCSequence *sequenceAction = CCSequence::create( hideTitleAnimation , delay1 , hideMenuAnimation , delay2 , changeScene , NULL );
+    
+    this->runAction(sequenceAction);
 }
 
-void LevelLayer::changeScene(){
-    CCScene *pScene = GameBoardLayer::scene( m_enumLevel );
-    CCDirector::sharedDirector()->replaceScene(pScene);
+void EndGameLayer::changeSceneToStartMScene(){
+    CCScene *scene = StartMenuLayer::scene();
+    CCTransitionFade *fade = CCTransitionFade::create(0.3f, scene, ccc3(56, 174, 82));
+    CCDirector::sharedDirector()->replaceScene(fade);
 }
 
-void LevelLayer::setMenuTouchDisable(){
-    CCMenu *menu1 = (CCMenu *)this->getChildByTag(EnumLevelSceneTag_MenuButton_Easy);
-    menu1->setTouchEnabled( false );
-    CCMenu *menu2 = (CCMenu *)this->getChildByTag(EnumLevelSceneTag_MenuButton_Normal);
-    menu2->setTouchEnabled( false );
-    CCMenu *menu3 = (CCMenu *)this->getChildByTag(EnumLevelSceneTag_MenuButton_Hard);
-    menu3->setTouchEnabled( false );
+void EndGameLayer::showMenuButtonAnimation(){
+    this->initialMenu();
 }
 

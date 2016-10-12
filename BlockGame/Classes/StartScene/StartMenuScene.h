@@ -40,6 +40,16 @@ private:
     void selectedMenuButton();
     
     void changeScene();
+    
+    // Sound
+    void preloadSounds();
+    void playHeartBeatSound();
+    void playHeartBeatSound2();
+    void playHeartBeatSound3();
+    void playBGMusic();
+    
+    unsigned int m_uiSoundPlayCount;
+    bool isStartBgMusic;
 };
 
 #endif /* StartMenuScene_hpp */

@@ -14,10 +14,14 @@
 // for Scene
 #include "LevelScene.h"
 
+// for Sound
+#include "SimpleAudioEngine.h"
+
 // for Tools
 //#include "ActionTools.h"
 
 USING_NS_CC;
+using namespace CocosDenshion;
 
 typedef enum{
     EnumStartMenuSceneZPosition_Man = 10,
@@ -30,6 +34,9 @@ typedef enum{
 bool StartMenuLayer::init(){
     
     if ( CCLayerColor::initWithColor(D_BlockGame_BackgroundColor) ) {
+        
+        m_uiSoundPlayCount = 0;
+        isStartBgMusic = false;
         
         this->createGameBoardAnimation();
         
@@ -66,15 +73,20 @@ void StartMenuLayer::createGameTitle(){
     labelTTF->setPosition(ccp(visibleSize.width*0.5, visibleSize.height*0.7));
     this->addChild(labelTTF);
     
-    CCScaleTo *scaleALittleBig = CCScaleTo::create(0.05, 1.2f);
+    CCScaleTo *scaleALittleBig = CCScaleTo::create(0.044, 1.2f);
     CCEaseIn *easeInAction = CCEaseIn::create(scaleALittleBig, 0.5f);
-    CCScaleTo *scaleALittleSmall = CCScaleTo::create(0.05, 1.0f);
+    CCScaleTo *scaleALittleSmall = CCScaleTo::create(0.044, 1.0f);
     CCEaseOut *easeOutAction = CCEaseOut::create(scaleALittleSmall, 0.5f);
-    CCDelayTime *delayALittleTime = CCDelayTime::create(0.45f);
-    CCSequence *sequenceHeartBit = CCSequence::create(easeInAction , easeOutAction , delayALittleTime , NULL);
+    CCDelayTime *delayALittleTime = CCDelayTime::create(0.46f);
+    
+    CCCallFunc *func = CCCallFunc::create(this, callfunc_selector(StartMenuLayer::playHeartBeatSound));
+    
+    CCSequence *sequenceHeartBit = CCSequence::create(easeInAction , func , easeOutAction , delayALittleTime , NULL);
     CCRepeatForever *repeatForever = CCRepeatForever::create(sequenceHeartBit);
     
     labelTTF->runAction(repeatForever);
+    
+    this->preloadSounds();
 }
 
 void StartMenuLayer::createManAnimation(){
@@ -108,7 +120,6 @@ void StartMenuLayer::createMenuButton(){
     menu->setContentSize( CCSizeMake(menuItemImage->getContentSize().width, menuItemImage->getContentSize().height));
     menu->setPosition( ccp( visibleSize.width*0.33 , visibleSize.height*0.3) );
     this->addChild( menu , EnumStartMenuSceneTag_MenuButton , EnumStartMenuSceneTag_MenuButton );
-    
 }
 
 void StartMenuLayer::selectedMenuButton(){
@@ -152,9 +163,74 @@ void StartMenuLayer::changeScene(){
     
 }
 
+void StartMenuLayer::playHeartBeatSound(){
+    
+    
+    if ( m_uiSoundPlayCount > 40 ) {
+        m_uiSoundPlayCount = 40;
+    }
+    switch ( m_uiSoundPlayCount / 4) {
+        case 5:
+        case 4:
+        case 3:
+        {
+            
+        }
+        case 2:
+        {
+//            CCDelayTime *delay = CCDelayTime::create(0.02);
+//            CCDelayTime *delay2 = CCDelayTime::create(0.04);
+//            CCCallFunc *playSound = CCCallFunc::create(this , callfunc_selector(StartMenuLayer::playHeartBeatSound3));
+//            CCSequence *sequence = CCSequence::create( delay , playSound , delay2 , playSound, NULL );
+//            this->runAction(sequence);
+            
+            // play once
+            if ( isStartBgMusic == false ) {
+                isStartBgMusic = true;
+                SimpleAudioEngine::sharedEngine()->playBackgroundMusic( "startMenuMusic.mp3", true);
+            }
 
+        }
+        case 1:
+        {
+            CCDelayTime *delay = CCDelayTime::create(0.02);
+            CCCallFunc *playSound = CCCallFunc::create(this , callfunc_selector(StartMenuLayer::playHeartBeatSound2));
+            CCSequence *sequence = CCSequence::create( delay , playSound , NULL );
+            this->runAction(sequence);
+        }
+        case 0:
+        default:
+            SimpleAudioEngine::sharedEngine()->playEffect( "tap.mp3" );
+            break;
+    }
+    m_uiSoundPlayCount = m_uiSoundPlayCount + 1;
+}
 
+void StartMenuLayer::preloadSounds(){
+    
+    // StartMenu
+    SimpleAudioEngine::sharedEngine()->preloadEffect( "tap.mp3" );
+    SimpleAudioEngine::sharedEngine()->preloadEffect( "tap2.mp3" );
+    SimpleAudioEngine::sharedEngine()->preloadEffect( "tap4.mp3" );
+    SimpleAudioEngine::sharedEngine()->preloadBackgroundMusic( "startMenuMusic.mp3" );
+    SimpleAudioEngine::sharedEngine()->
+    
+    // GameBoard
+    SimpleAudioEngine::sharedEngine()->preloadEffect( "blockDown.mp3" );
+    SimpleAudioEngine::sharedEngine()->preloadEffect( "blockDisappear.mp3" );
+    SimpleAudioEngine::sharedEngine()->preloadEffect( "blockTouchFail.mp3" );
+}
 
+void StartMenuLayer::playHeartBeatSound2(){
+    SimpleAudioEngine::sharedEngine()->playEffect( "tap2.mp3" );
+}
 
+void StartMenuLayer::playHeartBeatSound3(){
+    SimpleAudioEngine::sharedEngine()->playEffect( "tap4.mp3" );
+}
+
+void StartMenuLayer::playBGMusic(){
+    SimpleAudioEngine::sharedEngine()->playBackgroundMusic( "startMenuMusic.mp3", true );
+}
 
 

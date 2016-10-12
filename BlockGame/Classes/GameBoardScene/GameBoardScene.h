@@ -33,8 +33,8 @@ typedef enum{
     EnumGameBoardSceneTag_Go = 610,
     EnumGameBoardSceneTag_BlockMoveManager = 1000,
     EnumGameBoardSceneTag_ClockTool_BasicClock = 1010,
-    EnumGameBoardSceneTag_ClockTool_PlayerHelper = 1020
-    
+    EnumGameBoardSceneTag_ClockTool_PlayerHelper = 1020,
+    EnumGameBoardSceneTag_EndGameLayer = 2000
 }EnumGameBoardSceneTag;
 
 typedef enum{
@@ -126,6 +126,9 @@ private:
     void remindTargets( cocos2d::CCArray *targetNumbers );
     void stopRemindRecentNumber();
     void stopRemindTargets( cocos2d::CCArray *targetNumbers );
+    
+    // 聲音
+    void playFallDownSound();
     
 #pragma mark - Property
     // Properties

@@ -11,6 +11,9 @@
 // for Constant
 #include "BlockGameConstant.h"
 
+// for Sound
+#include "SimpleAudioEngine.h"
+
 USING_NS_CC;
 
 #pragma mark - Public
@@ -116,7 +119,10 @@ void BasicBlock::appearTo( unsigned int targetPosition ){
 
 void BasicBlock::disappearBlock(bool isSuccess ,
                                 cocos2d::CCObject *targetObj ,
-                                cocos2d::SEL_CallFuncN selDisappearDone ){
+                                cocos2d::SEL_CallFuncN selDisappearDone )
+{
+    
+    CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect("blockDisappear.mp3");
     
     CCLabelTTF *numberLabel = (CCLabelTTF *)getChildByTag(EnumBasicBlockTag_NumberLabel);
     CCSprite *bgsprite = (CCSprite *)getChildByTag(EnumBasicBlockTag_Background);

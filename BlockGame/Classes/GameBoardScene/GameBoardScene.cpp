@@ -8,20 +8,27 @@
 
 #include "GameBoardScene.h"
 
+// for Layer
+#include "EndGameLayer.h"
+
 // for Tools
 #include "BlockMoveManager.h"
 #include "ClockTools.h"
 
+// for Sound
+#include "SimpleAudioEngine.h"
+
 USING_NS_CC;
+using namespace CocosDenshion;
 
 #pragma mark - Public
 bool GameBoardLayer::init(EnumGameBoard_Level level){
     
-    if ( CCLayerColor::initWithColor( D_BlockGame_LevelLayerColor ) ) {
+    if ( CCLayerColor::initWithColor( D_BlockGame_GreenColor ) ) {
         
         m_bCanTouch = false;
         m_enumRecentLevel = level;
-        m_uiBlockMaxNumber = 35;
+        m_uiBlockMaxNumber = 15;
         m_uiBlockMaxMoveNumber = 2;
         m_uiRecentTargetNumber = 1;
         m_enumGameState = EnumGameBoardState_Wait;
@@ -80,7 +87,15 @@ void GameBoardLayer::setGameState( EnumGameBoardState gameState){
             break;
         case EnumGameBoardState_Win:
         {
+            // 加入一個 layer(由底下 pop 上來)
             
+            // 內有按鈕
+            EndGameLayer *layer = (EndGameLayer *)this->getChildByTag(EnumGameBoardSceneTag_EndGameLayer);
+            if ( layer == NULL ) {
+                layer = EndGameLayer::create();
+                this->addChild(layer , EnumGameBoardSceneTag_EndGameLayer , EnumGameBoardSceneTag_EndGameLayer);
+            }
+            layer->startInitialLayer();
         }
             break;
         case EnumGameBoardState_Lose:
@@ -127,8 +142,8 @@ void GameBoardLayer::initialBlocks( unsigned int count ){
     if( count > D_BlockGame_BlockMaxCount ){
         count = D_BlockGame_BlockMaxCount;
     }
-    if ( count < 10 ) {
-        count = 10;
+    if ( count < D_BlockGame_BlockMinCount ) {
+        count = D_BlockGame_BlockMinCount;
     }
     
     for ( int i = 0 ; i < count ; i++ ) {
@@ -184,7 +199,7 @@ void GameBoardLayer::setGameLevel(EnumGameBoard_Level newLevel){
         case EnumGameBoard_Level_Easy:
         default:
         {
-            m_uiBlockMaxNumber = 15;
+            m_uiBlockMaxNumber = 5;
             m_uiBlockMaxMoveNumber = 2;
         }
             break;
@@ -463,7 +478,11 @@ void GameBoardLayer::showBlockAnimation( BasicBlock *block ){
     CCMoveTo *moveToAction = CCMoveTo::create(0.3f, blockPoint);
     CCEaseOut *easeOutAction = CCEaseOut::create(moveToAction, 2.0f);
     
-    block->runAction(easeOutAction);
+    CCCallFunc *fallDownFunc = CCCallFunc::create( this , callfunc_selector(GameBoardLayer::playFallDownSound) );
+    
+    CCSequence *sequence = CCSequence::create( easeOutAction , fallDownFunc , NULL );
+    
+    block->runAction(sequence);
     
 }
 
@@ -573,7 +592,9 @@ void GameBoardLayer::ccTouchesEnded( cocos2d::CCSet *pTouches , cocos2d::CCEvent
 #ifdef D_Dev_Ver
                 CCLOG("（錯誤）按到 %d !! " , block->getBlockNumber());
 #endif
+                
                 // 懲罰
+                SimpleAudioEngine::sharedEngine()->playEffect("blockTouchFail.mp3");
             }
             
             break;
@@ -659,4 +680,7 @@ void GameBoardLayer::stopRemindTargets(cocos2d::CCArray *targetNumbers){
     }
 }
 
+void GameBoardLayer::playFallDownSound(){
+    SimpleAudioEngine::sharedEngine()->playEffect("blockDown.mp3");
+}
 

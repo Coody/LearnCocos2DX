@@ -18,9 +18,6 @@
 #define D_BlockGame_BlackLayerColor cocos2d::ccc4(0, 0, 0, 255)
 #define D_BlockGame_FontName "From Cartoon Blocks"
 #define D_BlockGame_FontName2 "Luckiest Guy"
-#define D_Label_Image1 ""
-#define D_Label_Image1_Width (0.0f)
-#define D_Label_Image1_Height (0.0f)
 
 #define D_BlockGame_BlockMaxCount (40)
 #define D_BlockGame_BlockMinCount (5)

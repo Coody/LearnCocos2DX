@@ -282,6 +282,9 @@
 		FB24DF911D9E3CB9008B3421 /* LevelScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FB24DF8F1D9E3CB9008B3421 /* LevelScene.cpp */; };
 		FB2F140B1DACBFF700EDD25A /* tap2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FB2F140A1DACBFF700EDD25A /* tap2.mp3 */; };
 		FB2F140D1DACC00E00EDD25A /* tap.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FB2F140C1DACC00E00EDD25A /* tap.mp3 */; };
+		FB3FED8A1DB60BE2003B0D8B /* TitleLabelActor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FB3FED881DB60BE2003B0D8B /* TitleLabelActor.cpp */; };
+		FB3FED8D1DB63105003B0D8B /* LevelManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FB3FED8B1DB63105003B0D8B /* LevelManager.cpp */; };
+		FB3FED901DB631D2003B0D8B /* MenuActor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FB3FED8E1DB631D2003B0D8B /* MenuActor.cpp */; };
 		FB4D83641DACD7F000565D40 /* tap4.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FB4D83631DACD7F000565D40 /* tap4.mp3 */; };
 		FB4D83661DACDCFA00565D40 /* startMenuMusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FB4D83651DACDCFA00565D40 /* startMenuMusic.mp3 */; };
 		FB4D83681DACE6C000565D40 /* blockDown.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FB4D83671DACE6C000565D40 /* blockDown.mp3 */; };
@@ -289,6 +292,7 @@
 		FB4D836C1DACE9A600565D40 /* blockTouchFail.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FB4D836B1DACE9A600565D40 /* blockTouchFail.mp3 */; };
 		FB4D836E1DACF52D00565D40 /* startMenuBGMusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FB4D836D1DACF52D00565D40 /* startMenuBGMusic.mp3 */; };
 		FB4D83701DACF75900565D40 /* startMenuBtnPressed.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FB4D836F1DACF75900565D40 /* startMenuBtnPressed.mp3 */; };
+		FB575A751DB47D48004FFEDF /* StartMenuManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FB575A731DB47D48004FFEDF /* StartMenuManager.cpp */; };
 		FB767B161DA5ED9B001AFD5D /* ClockTools.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FB767B141DA5ED9B001AFD5D /* ClockTools.cpp */; };
 		FB954D101DA652C3009E693A /* PlayerManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FB954D0E1DA652C3009E693A /* PlayerManager.cpp */; };
 		FB954D131DA652E1009E693A /* BlockManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FB954D111DA652E1009E693A /* BlockManager.cpp */; };
@@ -864,6 +868,12 @@
 		FB24DF901D9E3CB9008B3421 /* LevelScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LevelScene.h; sourceTree = "<group>"; };
 		FB2F140A1DACBFF700EDD25A /* tap2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = tap2.mp3; sourceTree = "<group>"; };
 		FB2F140C1DACC00E00EDD25A /* tap.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = tap.mp3; sourceTree = "<group>"; };
+		FB3FED881DB60BE2003B0D8B /* TitleLabelActor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TitleLabelActor.cpp; sourceTree = "<group>"; };
+		FB3FED891DB60BE2003B0D8B /* TitleLabelActor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TitleLabelActor.h; sourceTree = "<group>"; };
+		FB3FED8B1DB63105003B0D8B /* LevelManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LevelManager.cpp; sourceTree = "<group>"; };
+		FB3FED8C1DB63105003B0D8B /* LevelManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LevelManager.h; sourceTree = "<group>"; };
+		FB3FED8E1DB631D2003B0D8B /* MenuActor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MenuActor.cpp; sourceTree = "<group>"; };
+		FB3FED8F1DB631D2003B0D8B /* MenuActor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuActor.h; sourceTree = "<group>"; };
 		FB4D83631DACD7F000565D40 /* tap4.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = tap4.mp3; sourceTree = "<group>"; };
 		FB4D83651DACDCFA00565D40 /* startMenuMusic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = startMenuMusic.mp3; sourceTree = "<group>"; };
 		FB4D83671DACE6C000565D40 /* blockDown.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = blockDown.mp3; sourceTree = "<group>"; };
@@ -871,6 +881,10 @@
 		FB4D836B1DACE9A600565D40 /* blockTouchFail.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = blockTouchFail.mp3; sourceTree = "<group>"; };
 		FB4D836D1DACF52D00565D40 /* startMenuBGMusic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = startMenuBGMusic.mp3; sourceTree = "<group>"; };
 		FB4D836F1DACF75900565D40 /* startMenuBtnPressed.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = startMenuBtnPressed.mp3; sourceTree = "<group>"; };
+		FB575A731DB47D48004FFEDF /* StartMenuManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StartMenuManager.cpp; sourceTree = "<group>"; };
+		FB575A741DB47D48004FFEDF /* StartMenuManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartMenuManager.h; sourceTree = "<group>"; };
+		FB575A761DB47E39004FFEDF /* BlockGameSoundConstant.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BlockGameSoundConstant.h; sourceTree = "<group>"; };
+		FB575A771DB4A3D9004FFEDF /* BlockGameImageConstant.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BlockGameImageConstant.h; sourceTree = "<group>"; };
 		FB767B141DA5ED9B001AFD5D /* ClockTools.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ClockTools.cpp; sourceTree = "<group>"; };
 		FB767B151DA5ED9B001AFD5D /* ClockTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClockTools.h; sourceTree = "<group>"; };
 		FB954D0E1DA652C3009E693A /* PlayerManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PlayerManager.cpp; sourceTree = "<group>"; };
@@ -1399,6 +1413,7 @@
 				FB24DF7C1D9E119E008B3421 /* BlockGameConstant */,
 				FB24DF7F1D9E119E008B3421 /* Tools */,
 				FB14EB9B1DA1F86800304581 /* BlockObjects */,
+				FB3FED871DB60BAD003B0D8B /* BaseActor */,
 				FB24DF851D9E155F008B3421 /* LogoScene */,
 				FB24DF7E1D9E119E008B3421 /* StartScene */,
 				FB24DF8E1D9E3CA2008B3421 /* LevelScene */,
@@ -2065,6 +2080,8 @@
 			isa = PBXGroup;
 			children = (
 				FB24DF801D9E11BD008B3421 /* BlockGameConstant.h */,
+				FB575A761DB47E39004FFEDF /* BlockGameSoundConstant.h */,
+				FB575A771DB4A3D9004FFEDF /* BlockGameImageConstant.h */,
 			);
 			path = BlockGameConstant;
 			sourceTree = "<group>";
@@ -2085,6 +2102,8 @@
 		FB24DF7E1D9E119E008B3421 /* StartScene */ = {
 			isa = PBXGroup;
 			children = (
+				FB575A741DB47D48004FFEDF /* StartMenuManager.h */,
+				FB575A731DB47D48004FFEDF /* StartMenuManager.cpp */,
 				FB24DF831D9E12C9008B3421 /* StartMenuScene.h */,
 				FB24DF821D9E12C9008B3421 /* StartMenuScene.cpp */,
 			);
@@ -2140,6 +2159,8 @@
 		FB24DF8E1D9E3CA2008B3421 /* LevelScene */ = {
 			isa = PBXGroup;
 			children = (
+				FB3FED8C1DB63105003B0D8B /* LevelManager.h */,
+				FB3FED8B1DB63105003B0D8B /* LevelManager.cpp */,
 				FB24DF901D9E3CB9008B3421 /* LevelScene.h */,
 				FB24DF8F1D9E3CB9008B3421 /* LevelScene.cpp */,
 			);
@@ -2161,6 +2182,17 @@
 				FB4D83631DACD7F000565D40 /* tap4.mp3 */,
 			);
 			path = Sounds;
+			sourceTree = "<group>";
+		};
+		FB3FED871DB60BAD003B0D8B /* BaseActor */ = {
+			isa = PBXGroup;
+			children = (
+				FB3FED891DB60BE2003B0D8B /* TitleLabelActor.h */,
+				FB3FED881DB60BE2003B0D8B /* TitleLabelActor.cpp */,
+				FB3FED8F1DB631D2003B0D8B /* MenuActor.h */,
+				FB3FED8E1DB631D2003B0D8B /* MenuActor.cpp */,
+			);
+			path = BaseActor;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -2412,6 +2444,7 @@
 				15A3DA3C1682F826002FB0C5 /* CCLabelTTFLoader.cpp in Sources */,
 				15C0B572196D412F007F909D /* CocosGUI.cpp in Sources */,
 				15A3DA3D1682F826002FB0C5 /* CCLayerColorLoader.cpp in Sources */,
+				FB3FED901DB631D2003B0D8B /* MenuActor.cpp in Sources */,
 				15C0B589196D412F007F909D /* LabelAtlasReader.cpp in Sources */,
 				FB767B161DA5ED9B001AFD5D /* ClockTools.cpp in Sources */,
 				15A3DA3E1682F826002FB0C5 /* CCLayerGradientLoader.cpp in Sources */,
@@ -2431,6 +2464,7 @@
 				15A3DA471682F826002FB0C5 /* CCScrollViewLoader.cpp in Sources */,
 				15A3DA481682F826002FB0C5 /* CCSpriteLoader.cpp in Sources */,
 				15C0B578196D412F007F909D /* UIButton.cpp in Sources */,
+				FB575A751DB47D48004FFEDF /* StartMenuManager.cpp in Sources */,
 				15A3DA491682F826002FB0C5 /* CCControl.cpp in Sources */,
 				15A3DA4A1682F826002FB0C5 /* CCControlButton.cpp in Sources */,
 				15A3DA4B1682F826002FB0C5 /* CCControlColourPicker.cpp in Sources */,
@@ -2515,7 +2549,9 @@
 				1A8F3B81175E05DA00049216 /* SlotData.cpp in Sources */,
 				1A8F3B82175E05DA00049216 /* spine-cocos2dx.cpp in Sources */,
 				6FC34FAF1DAB819D00013605 /* EndGameLayer.cpp in Sources */,
+				FB3FED8A1DB60BE2003B0D8B /* TitleLabelActor.cpp in Sources */,
 				15C0B565196D412F007F909D /* CCSpriteFrameCacheHelper.cpp in Sources */,
+				FB3FED8D1DB63105003B0D8B /* LevelManager.cpp in Sources */,
 				15C0B576196D412F007F909D /* UIPageView.cpp in Sources */,
 				1AB87035175E0A84005D39BF /* WebSocket.cpp in Sources */,
 				1A9CE8781765A12C000E3062 /* AssetsManager.cpp in Sources */,

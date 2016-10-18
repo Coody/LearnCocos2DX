@@ -17,37 +17,6 @@
 // for Object
 #include "BasicBlock.h"
 
-typedef enum{
-    EnumGameBoardSceneTag_TopBar = 10,
-    EnumGameBoardSceneTag_TopBar_TargetTitle = 20,
-    EnumGameBoardSceneTag_TopBar_TimeTitle = 40,
-    EnumGameBoardSceneTag_TopBar_ScoreTitle = 50,
-    EnumGameBoardSceneTag_TopBar_SkillTitle = 60,
-    EnumGameBoardSceneTag_TopBar_SkillOne = 70,
-    EnumGameBoardSceneTag_TopBar_SkillTwo = 80,
-    EnumGameBoardSceneTag_TopBar_SkillThree = 90,
-    EnumGameBoardSceneTag_Block = 500,
-    EnumGameBoardSceneTag_BlockTop = 505,
-    EnumGameBoardSceneTag_TopBar_TargetNumber = 550,
-    EnumGameBoardSceneTag_Ready = 600,
-    EnumGameBoardSceneTag_Go = 610,
-    EnumGameBoardSceneTag_BlockMoveManager = 1000,
-    EnumGameBoardSceneTag_ClockTool_BasicClock = 1010,
-    EnumGameBoardSceneTag_ClockTool_PlayerHelper = 1020,
-    EnumGameBoardSceneTag_EndGameLayer = 2000
-}EnumGameBoardSceneTag;
-
-typedef enum{
-    EnumGameBoardSceneActionTag_RemindPlayer = 100
-}EnumGameBoardSceneActionTag;
-
-typedef enum{
-    EnumGameBoardState_Wait = 1,
-    EnumGameBoardState_Playing = 2,
-    EnumGameBoardState_Win = 3,
-    EnumGameBoardState_Lose = 4
-}EnumGameBoardState;
-
 class GameBoardLayer : public cocos2d::CCLayerColor{
 
 public:
@@ -69,10 +38,43 @@ public:
         }
     }
     
+
+    
     void startSceneAnimation();
     void initialBlocks( unsigned int count );
     
 private:
+    
+    typedef enum{
+        EnumGameBoardSceneTag_TopBar = 10,
+        EnumGameBoardSceneTag_TopBar_TargetTitle = 20,
+        EnumGameBoardSceneTag_TopBar_TimeTitle = 40,
+        EnumGameBoardSceneTag_TopBar_ScoreTitle = 50,
+        EnumGameBoardSceneTag_TopBar_SkillTitle = 60,
+        EnumGameBoardSceneTag_TopBar_SkillOne = 70,
+        EnumGameBoardSceneTag_TopBar_SkillTwo = 80,
+        EnumGameBoardSceneTag_TopBar_SkillThree = 90,
+        EnumGameBoardSceneTag_Block = 500,
+        EnumGameBoardSceneTag_BlockTop = 505,
+        EnumGameBoardSceneTag_TopBar_TargetNumber = 550,
+        EnumGameBoardSceneTag_Ready = 600,
+        EnumGameBoardSceneTag_Go = 610,
+        EnumGameBoardSceneTag_BlockMoveManager = 1000,
+        EnumGameBoardSceneTag_ClockTool_BasicClock = 1010,
+        EnumGameBoardSceneTag_ClockTool_PlayerHelper = 1020,
+        EnumGameBoardSceneTag_EndGameLayer = 2000
+    }EnumGameBoardSceneTag;
+    
+    typedef enum{
+        EnumGameBoardSceneActionTag_RemindPlayer = 100
+    }EnumGameBoardSceneActionTag;
+    
+    typedef enum{
+        EnumGameBoardState_Wait = 1,
+        EnumGameBoardState_Playing = 2,
+        EnumGameBoardState_Win = 3,
+        EnumGameBoardState_Lose = 4
+    }EnumGameBoardState;
     
     // 初始話、建立 blocks
     void setGameLevel( EnumGameBoard_Level newLevel );

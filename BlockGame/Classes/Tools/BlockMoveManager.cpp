@@ -52,6 +52,8 @@ bool BlockMoveManager::canGo( unsigned int position ){
 // 導航走向（會選個位置，如果沒辦法走，回傳 -1 ）
 int BlockMoveManager::gpsGo( unsigned int recentPoint ){
     int goPosition = -1;
+    
+    // 隨機四個走向
     CCArray *array = CCArray::create( CCString::create("6") , CCString::create("1") , CCString::create("-1") , CCString::create("-6") , NULL );
     for (int i = 0 ; i < 5 ; i++ ) {
         unsigned int indexA = arc4random()%4;
@@ -59,15 +61,16 @@ int BlockMoveManager::gpsGo( unsigned int recentPoint ){
         array->exchangeObjectAtIndex(indexA, indexB);
     }
     
+    // 檢查哪裡可以走？
     for (int i = 0 ; i < 4 ; i++ ) {
         
         int addPosition = ((CCString *)array->objectAtIndex(i))->intValue();
         if ( addPosition == 1 && recentPoint%D_BlockGame_GameBoardWidth == 5) {
-            // 超過邊界
+            // 超過右邊界
             continue;
         }
         else if( addPosition == -1 && recentPoint%D_BlockGame_GameBoardWidth == 0){
-            // 超過邊界
+            // 超過左邊界
             continue;
         }
         
@@ -75,6 +78,8 @@ int BlockMoveManager::gpsGo( unsigned int recentPoint ){
         if ( newPosition >= 0 && 
             newPosition < D_BlockGame_GameBoardMax && 
             this->canGo( newPosition ) ) {
+            
+            // 找到可以走的點，則回傳，並且不再找下去
             goPosition = newPosition;
             m_dFutureDic->setObject( m_dRecentDic->objectForKey(recentPoint) , goPosition);
             m_dFutureDic->removeObjectForKey(recentPoint);
@@ -95,6 +100,7 @@ void BlockMoveManager::synchronizeDic(){
     this->showRecent();
     this->showFeature();
 #endif
+    
 }
 
 void BlockMoveManager::addNewBlock( BasicBlock *block ){

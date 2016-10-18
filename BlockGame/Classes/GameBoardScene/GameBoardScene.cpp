@@ -372,15 +372,6 @@ void GameBoardLayer::playTargetNumberAppearAnimation(){
     
     CCRepeatForever *repeatForever2 = CCRepeatForever::create(CCSequence::create(easeInOutUpAction , easeInOutDownAction , NULL));
     
-    //        CCScaleTo *scaleALittleBig = CCScaleTo::create(0.05, 1.2f);
-    //        CCEaseIn *easeInAction = CCEaseIn::create(scaleALittleBig, 0.5f);
-    //        CCScaleTo *scaleALittleSmall = CCScaleTo::create(0.05, 1.0f);
-    //        CCEaseOut *easeOutHeartBitAction = CCEaseOut::create(scaleALittleSmall, 0.5f);
-    //        CCDelayTime *delayALittleTime = CCDelayTime::create(0.5f);
-    //        CCSequence *sequenceHeartBit = CCSequence::create(easeInAction , easeOutHeartBitAction , delayALittleTime , NULL);
-    //        CCRepeatForever *repeatForever = CCRepeatForever::create(sequenceHeartBit);
-    
-    //        targetNumberTTF->runAction(repeatForever);
     targetNumberTTF->runAction(repeatForever2);
 }
 
@@ -563,41 +554,43 @@ void GameBoardLayer::setCanTouchLayer(bool canTouch){
 
 // Touch 事件
 void GameBoardLayer::ccTouchesEnded( cocos2d::CCSet *pTouches , cocos2d::CCEvent *pEvent ){
+    
     // 只做這個
-    CCTouch *_touch = (CCTouch *)pTouches->anyObject();
-    
-    CCPoint _location = _touch->getLocation();
-    
-    CCPoint _trueLocation = ccp(_location.x - this->getPositionX(), _location.y - this->getPositionY());
     
     for ( int i = 0 ; i < this->m_arrBlockArray->count() ; i++ ) {
         BasicBlock *block = (BasicBlock *)this->m_arrBlockArray->objectAtIndex(i);
-        CCRect rect = CCRectMake(block->getPositionX() - block->getContentSize().width*0.5,
-                                 block->getPositionY() - block->getContentSize().height*0.5,
-                                 block->getContentSize().width,
-                                 block->getContentSize().height);
-        if ( rect.containsPoint(_trueLocation) ) {
+        
+        if ( block ) {
             
-            if ( m_uiRecentTargetNumber == block->getBlockNumber() ) {
-                // 正確按到
-#ifdef D_Dev_Ver
-                CCLOG("（正確）按到 %d !! " , m_uiRecentTargetNumber);
-#endif
-                // 消除 block
-                this->setTargetNumber( CCString::createWithFormat("%d" , m_uiRecentTargetNumber+1) );
-                block->disappearBlock( true , this , callfuncN_selector(GameBoardLayer::removeTouchBlock));
-            }
-            else{
-                // 錯誤！
-#ifdef D_Dev_Ver
-                CCLOG("（錯誤）按到 %d !! " , block->getBlockNumber());
-#endif
-                
-                // 懲罰
-                SimpleAudioEngine::sharedEngine()->playEffect("blockTouchFail.mp3");
-            }
+            CCTouch *_touch = (CCTouch *)pTouches->anyObject();
+            CCPoint _location = _touch->getLocation();
             
-            break;
+            CCPoint _trueLocation = block->convertToNodeSpace(_location);
+            CCRect rect = CCRectMake(block->getContentSize().width*-0.5,
+                                     block->getContentSize().height*-0.5,
+                                     block->getContentSize().width,
+                                     block->getContentSize().height);
+            if ( rect.containsPoint(_trueLocation) ) {
+                if ( m_uiRecentTargetNumber == block->getBlockNumber() ) {
+                    // 正確按到
+#ifdef D_Dev_Ver
+                    CCLOG("（正確）按到 %d !! " , m_uiRecentTargetNumber);
+#endif
+                    // 消除 block
+                    this->setTargetNumber( CCString::createWithFormat("%d" , m_uiRecentTargetNumber+1) );
+                    block->disappearBlock( true , this , callfuncN_selector(GameBoardLayer::removeTouchBlock));
+                }
+                else{
+                    // 錯誤！
+#ifdef D_Dev_Ver
+                    CCLOG("（錯誤）按到 %d !! " , block->getBlockNumber());
+#endif
+                    
+                    // 懲罰
+                    SimpleAudioEngine::sharedEngine()->playEffect("blockTouchFail.mp3");
+                }
+                break;
+            }
         }
     }
 

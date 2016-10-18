@@ -11,45 +11,9 @@
 
 #include "cocos2d.h"
 
-typedef enum{
-    EnumStartMenuSceneTag_Man = 10,
-    EnumStartMenuSceneTag_GameBoard = 15,
-    EnumStartMenuSceneTag_Finger = 20,
-    EnumStartMenuSceneTag_MenuButton = 100
-}EnumStartMenuSceneTag;
-
 class StartMenuLayer : public cocos2d::CCLayerColor{
 public:
-    
-    virtual bool init();
-    
     static cocos2d::CCScene *scene();
-    
-    CREATE_FUNC(StartMenuLayer);
-    
-private:
-    
-    void createGameTitle();
-    
-    void createManAnimation();
-    
-    void createGameBoardAnimation();
-    
-    void createMenuButton();
-    
-    void selectedMenuButton();
-    
-    void changeScene();
-    
-    // Sound
-    void preloadSounds();
-    void playHeartBeatSound();
-    void playHeartBeatSound2();
-    void playHeartBeatSound3();
-    void playBGMusic();
-    
-    unsigned int m_uiSoundPlayCount;
-    bool isStartBgMusic;
 };
 
 #endif /* StartMenuScene_hpp */

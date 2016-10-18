@@ -9,7 +9,7 @@
 #include "JPNumberManager.h"
 
 // for Define
-#include "BlockGameConstant.h"
+#include "BlockGameImageConstant.h"
 
 USING_NS_CC;
 

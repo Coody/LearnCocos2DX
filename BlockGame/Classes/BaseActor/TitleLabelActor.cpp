@@ -40,3 +40,15 @@ void TitleLabelActor::startHeartBitAction(){
     this->runAction(repeatForever);
 }
 
+void TitleLabelActor::startFadeInAction(cocos2d::CCObject *targetObj,
+                                        cocos2d::SEL_CallFunc selResponseBlockDone)
+{
+    this->runAction(ActionTools::getShowAnimation(targetObj, selResponseBlockDone));
+}
+
+void TitleLabelActor::startFadeOutAction(cocos2d::CCObject *targetObj,
+                                         cocos2d::SEL_CallFunc selResponseBlockDone)
+{
+    
+}
+

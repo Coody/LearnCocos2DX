@@ -41,9 +41,9 @@ bool StartMenuManager::init(){
         
         this->initialMenuButton();
         
-        this->preloadSounds();
-        
-        this->playBGMusic();
+//        this->preloadSounds();
+//        
+//        this->playBGMusic();
         
         return true;
     }
@@ -65,6 +65,7 @@ void StartMenuManager::initialTitle(){
                                                                               100,
                                                                               false,
                                                                               false);
+    startMenuTitleActor->setScale(0.0f);
     this->addChild(startMenuTitleActor , EnumStartMenuManagerTag_Title , EnumStartMenuManagerTag_Title);
     startMenuTitleActor->setPosition(ccp(visibleSize.width*0.5, visibleSize.height*0.7));
 }
@@ -200,6 +201,6 @@ void StartMenuManager::playBGMusic(){
 }
 
 void StartMenuManager::playButtonPressed(){
-    SimpleAudioEngine::sharedEngine()->playEffect( "startMenuBtnPressed.mp3" );
+//    SimpleAudioEngine::sharedEngine()->playEffect( "startMenuBtnPressed.mp3" );
 }
 

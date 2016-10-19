@@ -24,40 +24,120 @@ CCSequence *ActionTools::getHeartBitAnimation()
     return sequenceHeartBit;
 }
 
-CCSequence *ActionTools::getShowAnimation(float scaleBigTime,
-                                          float bigRate,
-                                          float scaleSmallTime)
+CCSpawn *ActionTools::getShowAnimation(cocos2d::CCObject *targetObj,
+                                       cocos2d::SEL_CallFunc selResponseBlockDone)
 {
-    return ActionTools::getShowAnimation(scaleBigTime, bigRate, scaleSmallTime, 1.0f);
+    return ActionTools::getShowAnimation(0.3f,
+                                         0.3f,
+                                         1.1f,
+                                         0.1f,
+                                         targetObj,
+                                         selResponseBlockDone);
 }
 
 /**
  *  顯示出場動畫的 Action（由正常大小 -> 變大 -> 變無 ）
  *
- *  @param scaleBigTime   變大的時間
- *  @param bigRate        變大的倍率
- *  @param scaleSmallTime 變小的時間
  */
-CCSequence *ActionTools::getHideAnimation(float scaleBigTime,
-                                          float bigRate,
-                                          float scaleSmallTime)
+CCSpawn *ActionTools::getHideAnimation(cocos2d::CCObject *targetObj,
+                                       cocos2d::SEL_CallFunc selResponseBlockDone)
 {
-    return ActionTools::getHideAnimation(scaleBigTime, bigRate, scaleSmallTime, 0.0f);
+    return NULL;
+}
+
+CCSequence *ActionTools::getMoveInRightToLeftAnimation( float delayTime )
+{
+    CCSize visibleSize = CCDirector::sharedDirector()->getVisibleSize();
+    return ActionTools::getMoveInRightToLeftAnimation(delayTime * D_BlockGame_ActionTools_HeartBeatSpeed,
+                                                      ccp(visibleSize.width*-0.5, 0 ),
+                                                      0.5f * D_BlockGame_ActionTools_HeartBeatSpeed,
+                                                      0.3f * D_BlockGame_ActionTools_HeartBeatSpeed);
+}
+
+CCSequence *ActionTools::getMoveOutLeftToRightAnimation( float delayTime )
+{
+    CCSize visibleSize = CCDirector::sharedDirector()->getVisibleSize();
+    return ActionTools::getMoveOutLeftToRightAnimation(delayTime * D_BlockGame_ActionTools_HeartBeatSpeed,
+                                                       ccp( visibleSize.width*0.5 , 0 ),
+                                                       0.35f * D_BlockGame_ActionTools_HeartBeatSpeed,
+                                                       0.15f * D_BlockGame_ActionTools_HeartBeatSpeed);
+}
+
+CCSpawn *ActionTools::getShowAnimation(float delayTime,
+                                          float scaleBigTime,
+                                          float bigRate,
+                                          float scaleSmallTime,
+                                          cocos2d::CCObject *targetObj,
+                                          cocos2d::SEL_CallFunc selResponseBlockDone)
+{
+    return ActionTools::getShowAnimation(delayTime,
+                                         scaleBigTime,
+                                         bigRate,
+                                         scaleSmallTime,
+                                         1.0f,
+                                         0.3f,
+                                         targetObj,
+                                         selResponseBlockDone);
+}
+
+CCSpawn *ActionTools::getHideAnimation(float delayTime,
+                                          float scaleBigTime,
+                                          float bigRate,
+                                          float scaleSmallTime,
+                                          cocos2d::CCObject *targetObj,
+                                          cocos2d::SEL_CallFunc selResponseBlockDone)
+{
+    return NULL;
 }
 
 #pragma mark - Private
-CCSequence *ActionTools::getShowAnimation(float scaleBigTime, 
-                                          float bigRate,
-                                          float scaleSmallTime,
-                                          float smallRate)
+CCSpawn *ActionTools::getShowAnimation(float delayTime,
+                                       float scaleBigTime, 
+                                       float bigRate,
+                                       float scaleSmallTime,
+                                       float smallRate,
+                                       float fadeInTime,
+                                       cocos2d::CCObject *targetObj,
+                                       cocos2d::SEL_CallFunc selResponseBlockDone)
 {
-    CCScaleBy *scaleBigAction = CCScaleBy::create( scaleBigTime , bigRate );
-    CCEaseIn *easeBigAction = CCEaseIn::create(scaleBigAction, 0.5f);
+    CCDelayTime *delayTimeAction = CCDelayTime::create(delayTime);
+    CCScaleTo *scaleBigAction = CCScaleTo::create( scaleBigTime , bigRate );
+    CCEaseOut *easeAction = CCEaseOut::create( scaleBigAction , 0.5f );
     
-    CCScaleBy *scaleSmallAction = CCScaleBy::create( scaleSmallTime , smallRate );
-    CCEaseOut *easeSmallAction = CCEaseOut::create(scaleSmallAction, 0.5f);
-    CCSequence *sequenceAction = CCSequence::create( easeBigAction , easeSmallAction , NULL);
-    return sequenceAction;
+    CCScaleTo *scaleSmallAction = CCScaleTo::create( scaleSmallTime , smallRate );
+    CCEaseInOut *easeSmallAction = CCEaseInOut::create(scaleSmallAction, 0.5f);
+    
+    // 加入 scale Action
+    CCSequence *sequenceAction;
+    CCCallFunc *callBackAction;
+    CCArray *scaleActionArray = CCArray::create();
+    CCArray *fadeActionArray = CCArray::create();
+    if ( delayTime > 0 ) {
+        fadeActionArray->addObject( delayTimeAction );
+        scaleActionArray->addObject( delayTimeAction );
+    }
+    scaleActionArray->addObject( easeAction );
+    scaleActionArray->addObject( easeSmallAction );
+    if ( targetObj != NULL && selResponseBlockDone != NULL ) {
+        callBackAction = CCCallFunc::create( targetObj , selResponseBlockDone );
+        scaleActionArray->addObject( callBackAction );
+    }
+    sequenceAction = CCSequence::create(scaleActionArray);
+    
+    // 加入 fade Action
+    CCSpawn *spawn;
+    CCFadeIn *fadeInAction;
+    CCSequence *fadeSequenceAction;
+    if ( fadeInTime > 0 ) {
+        fadeInAction = CCFadeIn::create(fadeInTime);
+        fadeActionArray->addObject( fadeInAction );
+        spawn = CCSpawn::create( sequenceAction , fadeSequenceAction , NULL );
+    }
+    else{
+        spawn = CCSpawn::create( sequenceAction , NULL );
+    }
+    
+    return spawn;
 }
 
 CCSequence *ActionTools::getHideAnimation(float scaleBigTime,
@@ -75,6 +155,38 @@ CCSequence *ActionTools::getHideAnimation(float scaleBigTime,
     
     CCSequence *sequenceAction = CCSequence::create( easeBigAction , delay , easeSmallAction  , NULL);
     return sequenceAction;
+}
+
+CCSequence *ActionTools::getMoveInRightToLeftAnimation(float delayTime,
+                                                    cocos2d::CCPoint endPoint,
+                                                    float moveInTime,
+                                                    float fadeInTime)
+{
+    CCMoveBy *moveToAction = CCMoveBy::create(moveInTime, endPoint );
+    CCEaseOut *easeAction = CCEaseOut::create(moveToAction, 1.0f);
+    CCFadeIn *fadeInAction = CCFadeIn::create(fadeInTime);
+    CCDelayTime *delay = CCDelayTime::create(0.4f);
+    
+    CCSpawn *spawn = CCSpawn::create(easeAction , fadeInAction , NULL );
+    CCSequence *sequence = CCSequence::create( delay , spawn , NULL );
+    return sequence;
+}
+
+CCSequence *ActionTools::getMoveOutLeftToRightAnimation(float delayTime,
+                                                        cocos2d::CCPoint endPoint,
+                                                        float moveOutTime,
+                                                        float fadeOutTime)
+{
+    CCMoveBy *moveToAction = CCMoveBy::create(moveOutTime,
+                                              endPoint);
+    CCEaseIn *easeAction = CCEaseIn::create(moveToAction, 1.0f);
+    CCFadeOut *fadeOutAction = CCFadeOut::create(fadeOutTime);
+    
+    CCDelayTime *delay = CCDelayTime::create( delayTime );
+    
+    CCSpawn *spawn = CCSpawn::create(easeAction , fadeOutAction , NULL );
+    CCSequence *sequence = CCSequence::create( delay , spawn , NULL );
+    return sequence;
 }
 
 

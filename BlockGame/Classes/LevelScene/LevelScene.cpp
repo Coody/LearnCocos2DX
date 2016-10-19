@@ -11,15 +11,19 @@
 // for Scene
 #include "GameBoardScene.h"
 
+// for Manager
+#include "LevelManager.h"
+
 USING_NS_CC;
 
 CCScene *LevelLayer::scene(){
     
     CCScene *scene = CCScene::create();
     
-    LevelLayer *layer = LevelLayer::create();
+//    LevelLayer *layer = LevelLayer::create();
+    LevelManager *levelMgr = LevelManager::create();
     
-    scene->addChild(layer);
+    scene->addChild(levelMgr);
     
     return scene;
 }
@@ -43,26 +47,26 @@ bool LevelLayer::init(){
 void LevelLayer::showLabelAnimation(){
     
     
-    CCSize visibleSize = CCDirector::sharedDirector()->getVisibleSize();
-    
-    // Title
-    CCLabelTTF *labelTTF = CCLabelTTF::create( "Select Level", D_BlockGame_FontName , 110);
-    labelTTF->setPosition(ccp(visibleSize.width*0.5, visibleSize.height*0.9));
-    labelTTF->setOpacity(0.0f);
-    labelTTF->setScale(0.0f);
-    this->addChild(labelTTF , EnumLevelSceneTag_TitleLabel , EnumLevelSceneTag_TitleLabel);
-    
-    CCDelayTime *delayTime = CCDelayTime::create(0.3f);
-
-    CCScaleTo *scaleBig = CCScaleTo::create(0.6f, 1.0f);
-    CCEaseOut *easeOutAction = CCEaseOut::create(scaleBig, 15.0f);
-    
-    CCFadeIn *fadeInAction = CCFadeIn::create(0.3f);
-    
-    CCCallFunc *showMenuAction = CCCallFunc::create(this , callfunc_selector(LevelLayer::showMenuButtonAnimation));
-    
-    labelTTF->runAction(CCSequence::create(delayTime , fadeInAction , NULL));
-    labelTTF->runAction(CCSequence::create(delayTime , easeOutAction , showMenuAction , NULL));
+//    CCSize visibleSize = CCDirector::sharedDirector()->getVisibleSize();
+//    
+//    // Title
+//    CCLabelTTF *labelTTF = CCLabelTTF::create( "Select Level", D_BlockGame_FontName , 110);
+//    labelTTF->setPosition(ccp(visibleSize.width*0.5, visibleSize.height*0.9));
+//    labelTTF->setOpacity(0.0f);
+//    labelTTF->setScale(0.0f);
+//    this->addChild(labelTTF , EnumLevelSceneTag_TitleLabel , EnumLevelSceneTag_TitleLabel);
+//    
+//    CCDelayTime *delayTime = CCDelayTime::create(0.3f);
+//
+//    CCScaleTo *scaleBig = CCScaleTo::create(0.6f, 1.0f);
+//    CCEaseOut *easeOutAction = CCEaseOut::create(scaleBig, 15.0f);
+//    
+//    CCFadeIn *fadeInAction = CCFadeIn::create(0.3f);
+//    
+//    CCCallFunc *showMenuAction = CCCallFunc::create(this , callfunc_selector(LevelLayer::showMenuButtonAnimation));
+//    
+//    labelTTF->runAction(CCSequence::create(delayTime , fadeInAction , NULL));
+//    labelTTF->runAction(CCSequence::create(delayTime , easeOutAction , showMenuAction , NULL));
     
 }
 
@@ -102,8 +106,11 @@ void LevelLayer::showMenuButtonAnimation(){
         CCEaseOut *easeAction = CCEaseOut::create(moveToAction, 1.0f);
         CCFadeIn *fadeInAction = CCFadeIn::create(0.3f);
         
-        menu->runAction(easeAction);
-        menu->runAction(fadeInAction);
+        CCSpawn *spawn = CCSpawn::create(easeAction , fadeInAction , NULL );
+        menu->runAction(spawn);
+//        menu->runAction(easeAction);
+//        menu->runAction(fadeInAction);
+        
         
     }
     

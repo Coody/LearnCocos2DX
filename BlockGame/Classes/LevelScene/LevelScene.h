@@ -14,13 +14,6 @@
 // for Constant
 #include "BlockGameConstant.h"
 
-typedef enum{
-    EnumLevelSceneTag_TitleLabel = 10,
-    EnumLevelSceneTag_MenuButton_Easy = 20,
-    EnumLevelSceneTag_MenuButton_Normal = 30,
-    EnumLevelSceneTag_MenuButton_Hard = 40
-}EnumLevelSceneTag;
-
 class LevelLayer : public cocos2d::CCLayerColor{
     
 public:
@@ -32,6 +25,13 @@ public:
     CREATE_FUNC(LevelLayer);
   
 private:
+    
+    typedef enum{
+        EnumLevelSceneTag_TitleLabel = 10,
+        EnumLevelSceneTag_MenuButton_Easy = 20,
+        EnumLevelSceneTag_MenuButton_Normal = 30,
+        EnumLevelSceneTag_MenuButton_Hard = 40
+    }EnumLevelSceneTag;
     
     void showLabelAnimation();
     

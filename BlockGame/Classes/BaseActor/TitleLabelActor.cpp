@@ -16,13 +16,19 @@
 
 USING_NS_CC;
 
-bool TitleLabelActor::initWithSetting(cocos2d::CCString *titleString , const char *fontName , float fontSize){
+bool TitleLabelActor::initWithSetting(cocos2d::CCString *titleString , const char *fontName , float fontSize , bool isOpacity , bool isScaleZero ){
     
     if ( CCLabelTTF::initWithString(titleString->getCString(),
                                     fontName, 
                                     fontSize) ) 
     {
         this->setColor(ccBLACK);
+        if ( isOpacity ) {
+            this->setOpacity(0.0f);
+        }
+        if ( isScaleZero ) {
+            this->setScale(0.0f);
+        }
         return true;
     }
     

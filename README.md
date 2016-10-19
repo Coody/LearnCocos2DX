@@ -13,7 +13,7 @@
   * __$ProjectLanguage__ 為使用的語言，有 lua , C++ , ooxx ，可未來熟悉整個框架後如果 
 ，設定自己的專案語言可以來建置 cocos2d 的專案，如果是 C++ 專案，則使用 cpp 即可。
 
-# 1. C++ 中的類別 .h 可視為 struct 的一種，因此：
+# 1. C++ 中的類別 .h 可視為 structure 的一種，因此：
 ```
 class Ooxx : public cocos2d::CCLayer{  <-- 注意要有 public
     // Data members

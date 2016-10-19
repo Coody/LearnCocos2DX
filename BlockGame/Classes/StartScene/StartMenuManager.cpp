@@ -62,7 +62,9 @@ void StartMenuManager::initialTitle(){
     
     TitleLabelActor *startMenuTitleActor = TitleLabelActor::createWithSetting(CCString::create("Hit!Hit!Hit!") ,
                                                                               D_BlockGame_FontName,
-                                                                              100);
+                                                                              100,
+                                                                              false,
+                                                                              false);
     this->addChild(startMenuTitleActor , EnumStartMenuManagerTag_Title , EnumStartMenuManagerTag_Title);
     startMenuTitleActor->setPosition(ccp(visibleSize.width*0.5, visibleSize.height*0.7));
 }

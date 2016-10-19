@@ -14,11 +14,11 @@
 class TitleLabelActor final : public cocos2d::CCLabelTTF{
     
 public:
-    virtual bool initWithSetting( cocos2d::CCString *titleString , const char *fontName , float fontSize );
+    virtual bool initWithSetting( cocos2d::CCString *titleString , const char *fontName , float fontSize , bool isOpacity , bool isScaleZero );
     
-    static TitleLabelActor *createWithSetting( cocos2d::CCString *titleString , const char *fontName , float fontSize ){
+    static TitleLabelActor *createWithSetting( cocos2d::CCString *titleString , const char *fontName , float fontSize , bool isOpacity , bool isScaleZero  ){
         TitleLabelActor *pRet = new TitleLabelActor();
-        if( pRet && pRet->initWithSetting( titleString, fontName, fontSize ) ){
+        if( pRet && pRet->initWithSetting( titleString, fontName, fontSize , isOpacity , isScaleZero  ) ){
             pRet->autorelease();
             return pRet;
         }
@@ -31,8 +31,11 @@ public:
     }
     
 #pragma mark - Actions
+    // 心跳 Action
     void startHeartBitAction();
-    
+    // FadeIn FadeOut Action
+    void startFadeInAction();
+    void startFadeOutAction();
 };
 
 #endif /* TitleLabelActor_h */

@@ -24,7 +24,6 @@ CCScene *StartMenuLayer::scene(){
     
     scene->addChild(startMenuMgr);
     
-    
     return scene;
     
 }

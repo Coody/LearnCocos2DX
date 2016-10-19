@@ -19,6 +19,25 @@ public:
     virtual bool init();
     
     CREATE_FUNC( LevelManager ) ;
+  
+private:
+    
+    typedef enum{
+        EnumLevelManagerTag_TitleLabel = 10,
+        EnumLevelManagerTag_MenuHard = 20,
+        EnumLevelManagerTag_MenuMid = 30,
+        EnumLevelManagerTag_MenuEasy = 40,
+        EnumLevelManagerTag_MenuCrazy = 50
+    }EnumLevelManagerTag;
+    
+    void initialTitle();
+    void initialMenu();
+    void startLevelAnimation();
+    void endLevelAnimation();
+    
+    void pressedHardLevel();
+    void pressedMidLevel();
+    void pressedLowLevel();
     
 };
 
